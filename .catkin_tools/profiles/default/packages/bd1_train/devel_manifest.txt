@@ -1,0 +1,25 @@
+bd1_train
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/cmake.lock /home/trax/personal-projects/bd1-2/devel/./cmake.lock
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/gennodejs/ros/bd1_train/_index.js /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_train/_index.js
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/gennodejs/ros/bd1_train/srv/SaveAgent.js /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_train/srv/SaveAgent.js
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/gennodejs/ros/bd1_train/srv/_index.js /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_train/srv/_index.js
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/roseus/ros/bd1_train/manifest.l /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_train/manifest.l
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/roseus/ros/bd1_train/srv/SaveAgent.l /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_train/srv/SaveAgent.l
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/bd1_train/cmake/bd1_train-msg-extras.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_train/cmake/bd1_train-msg-extras.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/bd1_train/cmake/bd1_trainConfig-version.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_train/cmake/bd1_trainConfig-version.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/bd1_train/cmake/bd1_trainConfig.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_train/cmake/bd1_trainConfig.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/bd1_train/cmake/bd1_train-msg-paths.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_train/cmake/bd1_train-msg-paths.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/common-lisp/ros/bd1_train/srv/_package_SaveAgent.lisp /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_train/srv/_package_SaveAgent.lisp
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/common-lisp/ros/bd1_train/srv/_package.lisp /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_train/srv/_package.lisp
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/common-lisp/ros/bd1_train/srv/SaveAgent.lisp /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_train/srv/SaveAgent.lisp
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/share/common-lisp/ros/bd1_train/srv/bd1_train-srv.asd /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_train/srv/bd1_train-srv.asd
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/bd1_train/cmake.lock /home/trax/personal-projects/bd1-2/devel/lib/bd1_train/cmake.lock
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/bd1_train/standup_train.py /home/trax/personal-projects/bd1-2/devel/lib/bd1_train/standup_train.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/bd1_train/standup_train_ppo.py /home/trax/personal-projects/bd1-2/devel/lib/bd1_train/standup_train_ppo.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/pkgconfig/bd1_train.pc /home/trax/personal-projects/bd1-2/devel/lib/pkgconfig/bd1_train.pc
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/python3/dist-packages/bd1_train/__init__.py /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_train/__init__.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/python3/dist-packages/bd1_train/srv/__init__.py /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_train/srv/__init__.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/lib/python3/dist-packages/bd1_train/srv/_SaveAgent.py /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_train/srv/_SaveAgent.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/include/bd1_train/SaveAgentResponse.h /home/trax/personal-projects/bd1-2/devel/include/bd1_train/SaveAgentResponse.h
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/include/bd1_train/SaveAgent.h /home/trax/personal-projects/bd1-2/devel/include/bd1_train/SaveAgent.h
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_train/include/bd1_train/SaveAgentRequest.h /home/trax/personal-projects/bd1-2/devel/include/bd1_train/SaveAgentRequest.h

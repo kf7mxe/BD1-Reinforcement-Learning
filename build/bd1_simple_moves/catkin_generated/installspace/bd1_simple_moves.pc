@@ -1,0 +1,8 @@
+prefix=/home/trax/personal-projects/bd1-2/install
+
+Name: bd1_simple_moves
+Description: Description of bd1_simple_moves
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

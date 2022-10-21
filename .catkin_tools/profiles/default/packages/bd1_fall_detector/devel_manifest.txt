@@ -1,0 +1,6 @@
+bd1_fall_detector
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_fall_detector/cmake.lock /home/trax/personal-projects/bd1-2/devel/./cmake.lock
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_fall_detector/share/bd1_fall_detector/cmake/bd1_fall_detectorConfig-version.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_fall_detector/cmake/bd1_fall_detectorConfig-version.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_fall_detector/share/bd1_fall_detector/cmake/bd1_fall_detectorConfig.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_fall_detector/cmake/bd1_fall_detectorConfig.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_fall_detector/lib/bd1_fall_detector/fall_detector_contacts /home/trax/personal-projects/bd1-2/devel/lib/bd1_fall_detector/fall_detector_contacts
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_fall_detector/lib/pkgconfig/bd1_fall_detector.pc /home/trax/personal-projects/bd1-2/devel/lib/pkgconfig/bd1_fall_detector.pc

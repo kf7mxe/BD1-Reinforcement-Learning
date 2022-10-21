@@ -1,0 +1,24 @@
+bd1_simple_moves
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/cmake.lock /home/trax/personal-projects/bd1-2/devel/./cmake.lock
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/gennodejs/ros/bd1_simple_moves/_index.js /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/_index.js
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/gennodejs/ros/bd1_simple_moves/srv/_index.js /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv/_index.js
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/gennodejs/ros/bd1_simple_moves/srv/SetLegs.js /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv/SetLegs.js
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/roseus/ros/bd1_simple_moves/manifest.l /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/manifest.l
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/roseus/ros/bd1_simple_moves/srv/SetLegs.l /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/srv/SetLegs.l
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/common-lisp/ros/bd1_simple_moves/srv/bd1_simple_moves-srv.asd /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_simple_moves/srv/bd1_simple_moves-srv.asd
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/common-lisp/ros/bd1_simple_moves/srv/_package.lisp /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_simple_moves/srv/_package.lisp
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/common-lisp/ros/bd1_simple_moves/srv/_package_SetLegs.lisp /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_simple_moves/srv/_package_SetLegs.lisp
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/common-lisp/ros/bd1_simple_moves/srv/SetLegs.lisp /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_simple_moves/srv/SetLegs.lisp
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/bd1_simple_moves/cmake/bd1_simple_movesConfig-version.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_simple_moves/cmake/bd1_simple_movesConfig-version.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/bd1_simple_moves/cmake/bd1_simple_movesConfig.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_simple_moves/cmake/bd1_simple_movesConfig.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/bd1_simple_moves/cmake/bd1_simple_moves-msg-paths.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_simple_moves/cmake/bd1_simple_moves-msg-paths.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/share/bd1_simple_moves/cmake/bd1_simple_moves-msg-extras.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_simple_moves/cmake/bd1_simple_moves-msg-extras.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/lib/pkgconfig/bd1_simple_moves.pc /home/trax/personal-projects/bd1-2/devel/lib/pkgconfig/bd1_simple_moves.pc
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/lib/bd1_simple_moves/cmake.lock /home/trax/personal-projects/bd1-2/devel/lib/bd1_simple_moves/cmake.lock
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/lib/bd1_simple_moves/basic_moves.py /home/trax/personal-projects/bd1-2/devel/lib/bd1_simple_moves/basic_moves.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/lib/python3/dist-packages/bd1_simple_moves/__init__.py /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/__init__.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/lib/python3/dist-packages/bd1_simple_moves/srv/__init__.py /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/__init__.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/include/bd1_simple_moves/SetLegsResponse.h /home/trax/personal-projects/bd1-2/devel/include/bd1_simple_moves/SetLegsResponse.h
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/include/bd1_simple_moves/SetLegs.h /home/trax/personal-projects/bd1-2/devel/include/bd1_simple_moves/SetLegs.h
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_simple_moves/include/bd1_simple_moves/SetLegsRequest.h /home/trax/personal-projects/bd1-2/devel/include/bd1_simple_moves/SetLegsRequest.h

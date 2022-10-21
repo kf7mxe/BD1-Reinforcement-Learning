@@ -1,0 +1,7 @@
+set(bd1_train_SETUP_PY_SETUP_MODULE "setuptools")
+set(bd1_train_SETUP_PY_VERSION "0.0.0")
+set(bd1_train_SETUP_PY_SCRIPTS "")
+set(bd1_train_SETUP_PY_PACKAGES "bd1_train")
+set(bd1_train_SETUP_PY_PACKAGE_DIRS "src/bd1_train")
+set(bd1_train_SETUP_PY_MODULES "")
+set(bd1_train_SETUP_PY_MODULE_DIRS "")

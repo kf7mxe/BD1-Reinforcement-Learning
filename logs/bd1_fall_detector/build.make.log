@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target fall_detector_contacts[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/fall_detector_contacts.dir/src/fall_detector_contacts.cc.o[0m
+[100%] [32m[1mLinking CXX executable /home/trax/personal-projects/bd1-2/devel/.private/bd1_fall_detector/lib/bd1_fall_detector/fall_detector_contacts[0m
+[100%] Built target fall_detector_contacts

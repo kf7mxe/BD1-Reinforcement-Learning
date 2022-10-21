@@ -1,0 +1,8 @@
+prefix=/home/trax/personal-projects/bd1-2/devel
+
+Name: bd1_config
+Description: Description of bd1_config
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

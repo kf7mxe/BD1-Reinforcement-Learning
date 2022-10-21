@@ -1,0 +1,5 @@
+bd1_config
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_config/cmake.lock /home/trax/personal-projects/bd1-2/devel/./cmake.lock
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_config/share/bd1_config/cmake/bd1_configConfig.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_config/cmake/bd1_configConfig.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_config/share/bd1_config/cmake/bd1_configConfig-version.cmake /home/trax/personal-projects/bd1-2/devel/share/bd1_config/cmake/bd1_configConfig-version.cmake
+/home/trax/personal-projects/bd1-2/devel/.private/bd1_config/lib/pkgconfig/bd1_config.pc /home/trax/personal-projects/bd1-2/devel/lib/pkgconfig/bd1_config.pc

@@ -1,0 +1,12 @@
+[31m[1mCMake Error[0m at /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake:146 (message):
+  Could NOT find PythonInterp: Found unsuitable version "2.7.18", but
+  required is at least "3" (found /usr/bin/python)
+[36mCall Stack (most recent call first):[0m
+  /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake:391 (_FPHSA_FAILURE_MESSAGE)
+  /usr/share/cmake-3.16/Modules/FindPythonInterp.cmake:169 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  /opt/ros/noetic/share/catkin/cmake/python.cmake:4 (find_package)
+  /opt/ros/noetic/share/catkin/cmake/all.cmake:164 (include)
+  /opt/ros/noetic/share/catkin/cmake/catkinConfig.cmake:20 (include)
+  CMakeLists.txt:4 (find_package)
+
+

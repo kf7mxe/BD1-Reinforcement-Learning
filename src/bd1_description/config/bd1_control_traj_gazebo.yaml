@@ -1,0 +1,39 @@
+joint_state_controller:
+  type: 'joint_state_controller/JointStateController'
+  publish_rate: 10  
+
+head_servo_state_controller:  
+  type: "velocity_controllers/JointTrajectoryController"
+  joints:
+    - neck_j
+    - head_j
+    
+  gains:
+    neck_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+    head_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+
+right_leg_servo_states_controller:
+  type: "velocity_controllers/JointTrajectoryController"
+  joints:
+    - up_leg_r_j
+    - mid_leg_r_j
+    - feet_r_j    
+    
+  gains:
+    up_leg_r_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+    mid_leg_r_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+    feet_r_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+    
+left_leg_servo_states_controller:
+  type: "velocity_controllers/JointTrajectoryController"
+  joints:
+    - up_leg_l_j
+    - mid_leg_l_j
+    - feet_l_j    
+    
+  gains:
+    up_leg_l_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+    mid_leg_l_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}
+    feet_l_j: {p: 100.0, i: 1, d: 1, i_clamp: 1}    
+
+
