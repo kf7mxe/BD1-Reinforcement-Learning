@@ -1,4 +1,4 @@
-from collections import deque
+-from collections import deque
 import rospy
 from bd1_environment_interface.srv import SetAction, SetVectAction, GetStateAndReward, GetVectStateAndReward
 from std_msgs.msg import Float64
