@@ -206,8 +206,15 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+# stand up interface
+# if ("$ENV{ROS_DISTRO}" STREQUAL "noetic")
+# catkin_install_python(PROGRAMS
+#    src/bd1_environment_interface/env_iface_standup.py
+#    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+# endif()
+
 if ("$ENV{ROS_DISTRO}" STREQUAL "noetic")
 catkin_install_python(PROGRAMS
-    src/bd1_environment_interface/env_iface_standup.py
+    src/bd1_environment_interface/bd1_environment_walk_forward_interface.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 endif()

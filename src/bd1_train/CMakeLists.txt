@@ -204,9 +204,15 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+# if ("$ENV{ROS_DISTRO}" STREQUAL "noetic")
+# catkin_install_python(PROGRAMS
+#    scripts/standup_train.py
+#    scripts/standup_train_ppo.py
+#    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+# endif()
+
 if ("$ENV{ROS_DISTRO}" STREQUAL "noetic")
 catkin_install_python(PROGRAMS
-    scripts/standup_train.py
-    scripts/standup_train_ppo.py
+    scripts/walk_train_nn_td_learning.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 endif()
