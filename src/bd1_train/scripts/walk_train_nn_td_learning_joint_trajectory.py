@@ -239,7 +239,7 @@ def main(env):
             # update agent
             if len(memory) >= batch_size:
                 loss = agent.update(memory.get_batch(batch_size))
-                writer.add_scalar("Loss", loss, episode)
+                # writer.add_scalar("Loss", loss, episode)
 
         # log episode
         # writer.add_scalar("Reward", reward, episode)
@@ -255,90 +255,61 @@ class BasicMoves(object):
         
         rospy.init_node('basic_moves')            
         
-        self.leg_mid_left = rospy.Publisher("/leg_mid_l_servo_velocity_controller/command",Float64, queue_size = 1)
-        self.leg_mid_right = rospy.Publisher("/leg_mid_r_servo_velocity_controller/command", Float64, queue_size = 1)
-        self.leg_up_left = rospy.Publisher("/leg_up_l_servo_velocity_controller/command", Float64, queue_size = 1)
-        self.leg_up_right = rospy.Publisher("/leg_up_r_servo_velocity_controller/command", Float64, queue_size = 1)
-        self.leg_feet_left = rospy.Publisher("/feet_l_servo_velocity_controller/command", Float64, queue_size = 1)
-        self.leg_feet_right = rospy.Publisher("/feet_r_servo_velocity_controller/command", Float64, queue_size = 1)
-
+        self.left_leg_pub = rospy.Publisher("/left_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)     
+        self.right_leg_pub = rospy.Publisher("/right_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)
+        self.head_pub = rospy.Publisher("/head_servo_state_controller/command", JointTrajectory, queue_size = 10)
         self.head_pub = rospy.Publisher("/neck_servo_velocity_controller/command", Float64, queue_size = 11)
-        
         self.stop_time = None    
 
-    def send_head_cmd(self, neck):
-        ctr_c = False
-        while not ctr_c:
-            connections = self.head_pub.get_num_connections()
-            if connections > 0:
-                self.head_pub.publish(neck)  
-                ctr_c = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)  
+    def send_head_cmd(self, neck, head, velocity):
+        head_cmd = JointTrajectory()
+        head_cmd.header.stamp = rospy.Time.now()
+        
+        head_cmd.joint_names = ['neck_j', 'head_j']
+        p = JointTrajectoryPoint()
+        p.positions.append(neck)
+        p.positions.append(head)
+        
+        p.velocities.append(velocity)
+        p.velocities.append(velocity)        
+        
+        p.time_from_start = rospy.Duration(1.0);
+        head_cmd.points.append(p)        
+                
+        self.head_pub.publish(head_cmd)
 
         
 
     def send_right_leg_cmd(self, up_r, up_r_velocity, mid_r,mid_r_velocity, feet_r, feet_r_velocity):
-        ctr_mid = False
-        while not ctr_mid:
-            mid_connections = self.leg_mid_right.get_num_connections()
-            if mid_connections > 0:
-                self.leg_mid_right.publish(mid_r_velocity)
-                ctr_mid = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)  
-        ctr_up = False
-        while not ctr_up:
-            up_connections = self.leg_up_right.get_num_connections()
-            if up_connections > 0:
-                self.leg_up_right.publish(up_r_velocity)
-                ctr_up = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)
-
-
-        ctr_feet = False
-        while not ctr_feet:
-            feet_connections = self.leg_feet_right.get_num_connections()
-            if feet_connections > 0:
-                self.leg_feet_right.publish(feet_r_velocity)
-                ctr_feet = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)
+        right_leg = JointTrajectory()
+        right_leg.header.stamp = rospy.Time.now()
+        
+        right_leg.joint_names = ['up_leg_r_j', 'mid_leg_r_j', 'feet_r_j']
+        p = JointTrajectoryPoint()
+        p.positions.append(up_r)
+        p.velocities.append(up_r_velocity)      
+        p.positions.append(mid_r)
+        p.velocities.append(mid_r_velocity)      
+        p.positions.append(feet_r)
+        p.velocities.append(feet_r_velocity)            
+        p.time_from_start = rospy.Duration(1.0);
+        right_leg.points.append(p)        
+        self.right_leg_pub.publish(right_leg)   
 
     def send_left_leg_cmd(self, up_l, up_l_velocity, mid_l,mid_l_velocity, feet_l, feet_l_velocity):
-        ctr_mid = False
-        while not ctr_mid:
-            mid_connections = self.leg_mid_left.get_num_connections()
-            if mid_connections > 0:
-                self.leg_mid_left.publish(mid_l_velocity)
-                ctr_mid = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)
-        ctr_up = False
-        while not ctr_up:
-            up_connections = self.leg_up_left.get_num_connections()
-            if up_connections > 0:
-                self.leg_up_left.publish(up_l_velocity)
-                ctr_up = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)
-        ctr_feet_l = False
-        while not ctr_feet_l:
-            feet_connections = self.leg_feet_left.get_num_connections()
-            if feet_connections > 0:
-                self.leg_feet_left.publish(feet_l_velocity)
-                ctr_feet_l = True
-            else:
-                rospy.loginfo("no connections")
-                rospy.sleep(1)
-
+        left_leg = JointTrajectory()
+        left_leg.header.stamp = rospy.Time.now()
+        left_leg.joint_names = ['up_leg_l_j', 'mid_leg_l_j', 'feet_l_j']
+        p = JointTrajectoryPoint()
+        p.positions.append(up_l)
+        p.positions.append(mid_l)
+        p.positions.append(feet_l)
+        p.velocities.append(up_l_velocity)
+        p.velocities.append(mid_l_velocity)        
+        p.velocities.append(feet_l_velocity)        
+        p.time_from_start = rospy.Duration(1.0);
+        left_leg.points.append(p)   
+        self.left_leg_pub.publish(left_leg)
 
 
 
@@ -354,14 +325,23 @@ def random_action(env, basic_moves):
     max_head_p = 1.5#np.pi/2
     min_head_p = -1.5#-np.pi/2
     rospy.loginfo("in random action")
-    iteratinos = 100
+    iteratinos = 1
     current =0
     while current < iteratinos:
-        basic_moves.send_left_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo))
-        basic_moves.send_right_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo))
-        basic_moves.send_head_cmd(random.uniform(0, max_vel_servo))
+        ctr_mid = False
+        while not ctr_mid:
+            mid_connections = basic_moves.left_leg_pub.get_num_connections()
+            if mid_connections > 0:
+                basic_moves.send_left_leg_cmd(-100, 10, -100, 10, -100, 10)
+                ctr_mid = True
+            else:
+                rospy.loginfo("no connections")
+                rospy.sleep(1) 
+        # basic_moves.send_left_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo))
+        # basic_moves.send_right_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo))
+        # basic_moves.send_head_cmd(random.uniform(max_head_p, min_head_p),random.uniform(max_head_p, min_head_p), random.uniform(max_head_p, min_head_p))
         current = current + 1
-        rospy.loginfo("in random action"+random.uniform(min_up_p, max_up_p).__str__())
+        # rospy.loginfo("in random action"+random.uniform(min_up_p, max_up_p).__str__())
 
     # env.set_action_srv()
 def test_get_state():
@@ -369,7 +349,6 @@ def test_get_state():
 
 if __name__ == "__main__":
     interface = BasicMoves()
-    recieve()
     random_action(None, interface)
     rospy.spin()
     # main()

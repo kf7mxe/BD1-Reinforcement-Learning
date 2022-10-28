@@ -4,7 +4,7 @@
     
     
     <!-- VEL or TRAJ-->
-    <arg name="servo_control" default="VEL"/>
+    <arg name="servo_control" default="TRAJ"/>
         
     <rosparam if="$(eval servo_control == 'TRAJ')" file="$(find bd1_description)/config/bd1_control_traj_gazebo.yaml" command="load" subst_value="true"/>            
     
@@ -24,29 +24,29 @@
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="headless" value="false"/>
-    </include>                        
+    </include>        
+    <!-- <node name="basic_moves" pkg="bd1_gazebo_env_interface" type="basic_moves.py" output="screen" />"                 -->
+    <!-- <node name="simple_standup_interface" pkg="bd1_gazebo_env_interface" type="simple_standup_gazebo_environment_inteface.py" output="screen"> -->
+    <!-- <node name="environment_interface_walk_forward" pkg="bd1_environment_interface" type="bd1_environment_interface_walk_forward.py" output="screen"> -->
+    <!-- </node> -->
     
-    <node name="simple_standup_interface" pkg="bd1_gazebo_env_interface" type="simple_standup_gazebo_environment_inteface.py" output="screen">
-
-    </node>
-    
-    <node name="standup_train" pkg="bd1_train" type="standup_train_ppo.py" output="screen">
-        <param name="episode_duration_sec" value="0.1"/>                        
+    <!-- <node name="walk_forward_train" pkg="bd1_train" type="walk_train_nn_td_learning.py" output="screen"> -->
+        <!-- <param name="episode_duration_sec" value="0.1"/>                         -->
         
-        <param name="save_path" value="$(find bd1_train)/models/PPO/simple_standup/default"/>  
+        <!-- <param name="save_path" value="$(find bd1_train)/models/PPO/simple_standup/default"/>   -->
         <!--<param name="load_path" value="$(find bd1_train)/models/PPO/simple_standup/default/fully_trained"/>-->
         <!--<param name="num_episodes" value="0"/>   -->
-        <param name="num_episodes" value="1000"/>   
+        <!-- <param name="num_episodes" value="1000"/>    -->
                         
-    </node>
+    <!-- </node> -->
     
-    <!--<node name="environment_interface_standup" pkg="bd1_environment_interface" type="env_iface_standup.py" output="screen">
+    <node name="environment_interface_standup" pkg="bd1_environment_interface" type="env_iface_standup.py" output="screen">
         <param name="target_x" value="0.0"/>
         <param name="target_y" value="0.0"/>
         <param name="target_z" value="0.34"/>
     </node>
     
-    <node name="standup_train" pkg="bd1_train" type="standup_train.py" output="screen">
+    <!-- <node name="standup_train" pkg="bd1_train" type="standup_train.py" output="screen">
         <param name="episode_duration_sec" value="0.05"/>
         <param name="memcap_replase_buffer_size" value="10000"/>
         <param name="var_control_extrapolation" value="1"/>                
@@ -57,7 +57,7 @@
         <param name="load_pathNO" value="$(find bd1_train)/models/1000"/>
         <param name="episode_backup_num" value="250"/>
         
-    </node>-->
+    </node>--> -
     
     <node name="fall_detector" pkg="bd1_fall_detector" type="fall_detector_contacts" output="screen"/>
     
