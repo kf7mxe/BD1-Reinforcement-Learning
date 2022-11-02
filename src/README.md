@@ -39,7 +39,7 @@ Run tensorboard with
 ```
 in console source ~/personal-projects/BD1/devel/setup.bash
 
-
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 
 
 # States

@@ -2,11 +2,17 @@ from collections import deque
 import random
 import rospy
 # from bd1_environment_interface.srv import SetAction, SetVectAction, GetStateAndReward, GetVectStateAndReward
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64, Bool
 import numpy as np
+from gazebo_msgs.msg import ModelState
 
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
+from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal, JointTrajectoryControllerState
+from std_srvs.srv import Empty
+from gazebo_msgs.srv import SetModelState, GetModelState, SpawnModel, DeleteModel, SetModelConfiguration
+
+from gazebo_msgs.msg import ModelStates
 # import torch
 
 # class QualityNN(torch.nn.Module):
@@ -122,19 +128,6 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 #             self.randomness *= self.decay
 #             self.randomness = max(self.randomness, self.min_randomness)
 
-def right_leg_state_cb(msg):
-    rospy.loginfo("joints test")
-    rospy.loginfo(msg)
-
-def recieve():
-    # rospy.init_node('my_first_python_test')
-    rospy.loginfo("in the recieve function")
-    rospy.Subscriber("right_leg_servo_states_controller/state", JointTrajectory, right_leg_state_cb)
-    rospy.loginfo("in the recieve function 2")
-    rospy.Subscriber("left_leg_servo_states_controller/state", JointTrajectory, queue_size = 10)
-    rospy.loginfo("in the recieve function 3")
-    rospy.Publisher("/head_servo_state_controller/command", JointTrajectory, queue_size = 10)
-    rospy.loginfo("in the recieve function 4")
 
 
 class DummyAgent(object):
@@ -156,46 +149,6 @@ class DummyMemory(object):
         pass
     def get_batch(self,batch_size):
         pass
-
-class MyEnvironment(object):
-    def __init__(self):
-        print("right here")
-
-
-        # rospy.wait_for_service('environment_interface_standup/reset')
-        # print("mabe I am grabbing the wrong thing")
-        # self.reset_srv = rospy.ServiceProxy('environment_interface_standup/reset', Empty)
-        # print("right here")
-        # rospy.loginfo("[{}] reset service ready!".format(self.name))
-
-        # rospy.wait_for_service('environment_interface_standup/get_vect_state_and_reward')
-        # self.get_state_and_reward_srv = rospy.ServiceProxy('environment_interface_standup/get_vect_state_and_reward', GetVectStateAndReward)
-        # rospy.loginfo("[{}] state and reward service ready!".format(self.name))
-        
-        # rospy.wait_for_service('environment_interface_standup/set_vect_action')
-        # self.set_action_srv = rospy.ServiceProxy('environment_interface_standup/set_vect_action', SetVectAction)
-        # rospy.loginfo("[{}] set vect action service ready!".format(self.name))
-        
-        # rospy.wait_for_service('gazebo/pause_physics')
-        # self.pause_srv = rospy.ServiceProxy('gazebo/pause_physics', Empty)
-        
-        # rospy.wait_for_service('gazebo/unpause_physics')
-        # self.unpause_srv = rospy.ServiceProxy('gazebo/unpause_physics', Empty)
-        
-        # rospy.Service("~change_train_test_mode", Empty, self.change_mode_cb)
-        # rospy.Service("~save_agent", SaveAgent, self.save_agent_cb)                
-        
-        # # rospy.Timer(self.episode_duration, self.train_cb)
-
-    def reset(self):
-        self.reset_srv()
-
-    def get_state(self):
-        return self.get_state_and_reward_srv()
-
-    def step(self, action):
-        self.set_action_srv(action)
-
 
 
 
@@ -250,20 +203,73 @@ def main(env):
 
 
 
-class BasicMoves(object):
+class MyEnvironment(object):
     def __init__(self):
         
-        rospy.init_node('basic_moves')            
         
         self.left_leg_pub = rospy.Publisher("/left_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)     
         self.right_leg_pub = rospy.Publisher("/right_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)
         self.head_pub = rospy.Publisher("/head_servo_state_controller/command", JointTrajectory, queue_size = 10)
-        self.head_pub = rospy.Publisher("/neck_servo_velocity_controller/command", Float64, queue_size = 11)
+        # self.head_pub = rospy.Publisher("/neck_servo_velocity_controller/command", Float64, queue_size = 11)
+
+        rospy.wait_for_service('gazebo/set_model_state')
+        self.set_model_state_srv = rospy.ServiceProxy('gazebo/set_model_state', SetModelState)
+
+        self.left_leg_servo_state = None
+        self.right_leg_servo_state = None
+        self.head_servo_state = None
+        self.model_state = None
         self.stop_time = None    
 
-    def send_head_cmd(self, neck, head, velocity):
+        self.left_leg_sub_no_message = 0
+        self.right_leg_sub_no_message = 0
+        self.head_sub_no_message = 0
+
+        rospy.loginfo("in the recieve function")
+        self.left_leg_sub = rospy.Subscriber("/left_leg_servo_states_controller/state", JointTrajectoryControllerState
+    , self.set_left_leg_state_cb)
+        rospy.loginfo("in the recieve function 2")
+        self.right_leg_sub = rospy.Subscriber("/right_leg_servo_states_controller/state", JointTrajectoryControllerState,self.set_right_leg_state_cb)
+        rospy.loginfo("in the recieve function 3")
+        self.head_pub_sub = rospy.Publisher("/head_servo_state_controller/state", JointTrajectoryControllerState,self.set_head_state_cb)
+        rospy.loginfo("in the recieve function 4")
+        rospy.Subscriber("/gazebo/model_states", ModelStates, self.set_model_state_cb)
+
+        
+        self.start_subscribing()
+
+
+    def reset(self):
+        self.reset_to_standing_cb()
+
+    def get_state(self):
+        rospy.loginfo("Getting state")
+        rospy.loginfo(self.right_leg_servo_state)
+        rospy.loginfo(self.left_leg_servo_state)
+        rospy.loginfo(self.head_servo_state)
+        rospy.loginfo(self.model_state)
+        
+
+    def start_subscribing(self):
+        pass
+        # rospy.init_node('my_first_python_test')
+        
+
+    def set_right_leg_state_cb(self,msg):
+        rospy.loginfo("testing when state is blank")
+        rospy.loginfo(msg)
+        self.right_leg_servo_state = msg
+    def set_left_leg_state_cb(self,msg):
+        self.left_leg_servo_state = msg
+    def set_head_state_cb(self,msg):
+        self.head_servo_state = msg
+    def set_model_state_cb(self,msg):
+        self.model_state = msg
+
+    def send_head_cmd(self, neck, head, velocity,start_time):
+        head_pub = rospy.Publisher("/head_servo_state_controller/command", JointTrajectory, queue_size = 10)
         head_cmd = JointTrajectory()
-        head_cmd.header.stamp = rospy.Time.now()
+        head_cmd.header.stamp = start_time
         
         head_cmd.joint_names = ['neck_j', 'head_j']
         p = JointTrajectoryPoint()
@@ -276,13 +282,14 @@ class BasicMoves(object):
         p.time_from_start = rospy.Duration(1.0);
         head_cmd.points.append(p)        
                 
-        self.head_pub.publish(head_cmd)
+        head_pub.publish(head_cmd)
 
         
 
-    def send_right_leg_cmd(self, up_r, up_r_velocity, mid_r,mid_r_velocity, feet_r, feet_r_velocity):
+    def send_right_leg_cmd(self, up_r, up_r_velocity, mid_r,mid_r_velocity, feet_r, feet_r_velocity, start_time):
+        right_leg_pub = rospy.Publisher("/right_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)
         right_leg = JointTrajectory()
-        right_leg.header.stamp = rospy.Time.now()
+        right_leg.header.stamp = start_time
         
         right_leg.joint_names = ['up_leg_r_j', 'mid_leg_r_j', 'feet_r_j']
         p = JointTrajectoryPoint()
@@ -294,11 +301,17 @@ class BasicMoves(object):
         p.velocities.append(feet_r_velocity)            
         p.time_from_start = rospy.Duration(1.0);
         right_leg.points.append(p)        
-        self.right_leg_pub.publish(right_leg)   
+        right_leg_pub.publish(right_leg)   
 
-    def send_left_leg_cmd(self, up_l, up_l_velocity, mid_l,mid_l_velocity, feet_l, feet_l_velocity):
+    def deploy_cb(self, req):
+        self.send_leg_cmd(0.5, 0.5, -1, -1, 0.5, 0.5, 1)    
+        self.send_head_cmd(-0.5, 0.5, 1)    
+        return []
+
+    def send_left_leg_cmd(self, up_l, up_l_velocity, mid_l,mid_l_velocity, feet_l, feet_l_velocity, start_time):    
+        left_leg_pub = rospy.Publisher("/left_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)     
         left_leg = JointTrajectory()
-        left_leg.header.stamp = rospy.Time.now()
+        left_leg.header.stamp = start_time
         left_leg.joint_names = ['up_leg_l_j', 'mid_leg_l_j', 'feet_l_j']
         p = JointTrajectoryPoint()
         p.positions.append(up_l)
@@ -309,12 +322,78 @@ class BasicMoves(object):
         p.velocities.append(feet_l_velocity)        
         p.time_from_start = rospy.Duration(1.0);
         left_leg.points.append(p)   
-        self.left_leg_pub.publish(left_leg)
+        left_leg_pub.publish(left_leg)
+
+    def reset_to_standing_cb(self,current_time):
 
 
 
-def random_action(env, basic_moves):
-    rospy.loginfo("in random action")
+
+        # pause physics
+
+        # pause_physics()
+
+
+
+        max_vel_servo = 1
+        max_feet_p = 1.5#np.pi/2
+        min_feet_p = -np.pi/2
+        max_mid_p = 2
+        min_mid_p = 3#-np.pi
+        max_up_p = -1#np.pi/2
+        min_up_p = -np.pi/2        
+        max_head_p = 0#np.pi/2
+        min_head_p = -1.5#-np.pi/2 
+
+
+        ctr_left = False
+        while not ctr_left:
+            left_connections = self.left_leg_pub.get_num_connections()
+            if left_connections > 0:
+                self.send_left_leg_cmd(max_up_p, max_vel_servo, max_mid_p, max_vel_servo, -1, 1,current_time)
+                rospy.loginfo("testing random")
+                rospy.loginfo(random.uniform(min_up_p, max_up_p))
+                ctr_left = True
+            else:
+                rospy.loginfo("no connections")
+
+        ctr_right = False
+        while not ctr_right:
+            right_connections = self.right_leg_pub.get_num_connections()
+            if right_connections > 0:
+                self.send_right_leg_cmd(max_up_p, max_vel_servo, max_mid_p, max_vel_servo, -1, 1,current_time)
+                ctr_right = True
+            else:
+                rospy.loginfo("no connections")
+        
+        ctr_head = False
+        while not ctr_head:
+            head_connections = self.head_pub.get_num_connections()
+            if head_connections > 0:
+                self.send_head_cmd(np.pi/2,-1.5, max_vel_servo,current_time)
+                ctr_head = True
+            else:
+                rospy.loginfo("no connections")
+
+        rospy.sleep(1.0)
+
+        ms = ModelState()
+        ms.model_name = "bd1"
+        ms.pose.position.z = 0.4
+        ms.pose.position.x = 0
+        ms.pose.position.y = 0
+        ms.pose.orientation.x = 0
+        ms.pose.orientation.y = 0
+        ms.pose.orientation.z = 0
+        ms.pose.orientation.w = 1
+
+        self.set_model_state_srv(ms)
+        return []        
+
+
+
+
+def random_action(basic_moves, current_time):
     max_vel_servo = 1
     max_feet_p = 1.5#np.pi/2
     min_feet_p = -np.pi/2
@@ -324,31 +403,121 @@ def random_action(env, basic_moves):
     min_up_p = -np.pi/2        
     max_head_p = 1.5#np.pi/2
     min_head_p = -1.5#-np.pi/2
-    rospy.loginfo("in random action")
     iteratinos = 1
     current =0
+
     while current < iteratinos:
-        ctr_mid = False
-        while not ctr_mid:
-            mid_connections = basic_moves.left_leg_pub.get_num_connections()
-            if mid_connections > 0:
-                basic_moves.send_left_leg_cmd(-100, 10, -100, 10, -100, 10)
-                ctr_mid = True
+        ctr_left = False
+        while not ctr_left:
+            left_connections = basic_moves.left_leg_pub.get_num_connections()
+            if left_connections > 0:
+                basic_moves.send_left_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo),current_time)
+                rospy.loginfo("testing random")
+                rospy.loginfo(random.uniform(min_up_p, max_up_p))
+                ctr_left = True
             else:
                 rospy.loginfo("no connections")
-                rospy.sleep(1) 
-        # basic_moves.send_left_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo))
-        # basic_moves.send_right_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo))
-        # basic_moves.send_head_cmd(random.uniform(max_head_p, min_head_p),random.uniform(max_head_p, min_head_p), random.uniform(max_head_p, min_head_p))
+
+        ctr_right = False
+        while not ctr_right:
+            right_connections = basic_moves.right_leg_pub.get_num_connections()
+            if right_connections > 0:
+                basic_moves.send_right_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo),current_time)
+                ctr_right = True
+            else:
+                rospy.loginfo("no connections")
+        
+        ctr_head = False
+        while not ctr_head:
+            head_connections = basic_moves.head_pub.get_num_connections()
+            if head_connections > 0:
+                basic_moves.send_head_cmd(random.uniform(min_head_p, max_head_p), random.uniform(min_head_p, max_head_p), random.uniform(0, max_vel_servo),current_time)
+                ctr_head = True
+            else:
+                rospy.loginfo("no connections")
         current = current + 1
+
         # rospy.loginfo("in random action"+random.uniform(min_up_p, max_up_p).__str__())
 
     # env.set_action_srv()
+
+
+
 def test_get_state():
     pass
 
+
+
+
+
 if __name__ == "__main__":
-    interface = BasicMoves()
-    random_action(None, interface)
-    rospy.spin()
+    rospy.init_node('basic_moves')   
+    env = MyEnvironment()
+    env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
+
+    rospy.sleep(1)
+
+    # env.get_state()
+    # rospy.sleep(4)
+    random_action(env,rospy.get_rostime())
+    rospy.sleep(1)
+    env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
+
+    # env.reset_to_standing_cb()
+    
+    # rospy.wait_for_service('/gazebo/spawn_sdf_model')
+    # spawnModelService = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
+    # rospy.wait_for_service('/gazebo/delete_model')
+    # removeModelService = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel)
+    # removeModelService("bd1")
+    # spawnModelService()
+    # reset back to origin position
+
+
+
+
+    # rospy.wait_for_service('/gazebo/reset_simulation')
+    # reset_simulation = rospy.ServiceProxy('/gazebo/reset_simulation', Empty)
+    # reset_simulation()
+
+
+    # rospy.sleep(5)
+    # env.reset_to_standing_cb()
+
+    # recieve()
+    # get_robots_xyz_state()
+    # fall_detector()
+    # random_action(None, interface)
+
+    # rospy.init_node('reset_world')
+
+    
+    # servos_disconnected = False
+    # while servos_disconnected == False:
+    #     left_leg_servo_disconnected = env.left_leg_sub.get_num_connections() == 0
+    #     right_leg_servo_disconnected = env.right_leg_sub.get_num_connections() == 0
+    #     head_servo_disconnected = env.head_pub_sub.get_num_connections() == 0
+    #     if left_leg_servo_disconnected and right_leg_servo_disconnected and head_servo_disconnected:
+    #         servos_disconnected = True
+    #     rospy.loginfo("waiting for left leg servo to disconnect")
+
+
+
+
+    # rospy.wait_for_service('/gazebo/reset_world')
+    # reset_world = rospy.ServiceProxy('/gazebo/reset_world', Empty)
+    # reset_world()
+
+    # rospy.wait_for_service('/gazebo/reset_simulation')
+    # reset_simulation = rospy.ServiceProxy('/gazebo/reset_simulation', Empty)
+
+
+
+    # # reset_world()
+
+    # reset_simulation()
+    # rospy.spin()
+    # close the node
+    # rospy.signal_shutdown("closing node")
+
     # main()
