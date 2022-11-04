@@ -53,21 +53,14 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 # Include the progress variables for this target.
 include bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/progress.make
 
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/srv/SetLegs.l
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/manifest.l
 
 
-/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/srv/SetLegs.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/srv/SetLegs.l: /home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from bd1_simple_moves/SetLegs.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_simple_moves && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_simple_moves -o /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/srv
-
 /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for bd1_simple_moves"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for bd1_simple_moves"
 	cd /home/trax/personal-projects/bd1-2/build/bd1_simple_moves && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves bd1_simple_moves std_msgs
 
 bd1_simple_moves_generate_messages_eus: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus
-bd1_simple_moves_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/srv/SetLegs.l
 bd1_simple_moves_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_simple_moves/manifest.l
 bd1_simple_moves_generate_messages_eus: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/build.make
 

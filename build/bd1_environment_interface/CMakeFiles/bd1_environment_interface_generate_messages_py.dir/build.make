@@ -54,12 +54,7 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 include bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/progress.make
 
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/_State.py
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetAction.py
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetVectAction.py
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetVectStateAndReward.py
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py
 
 
 /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/_State.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
@@ -67,53 +62,14 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG bd1_environment_interface/State"
 	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg
 
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetAction.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetAction.py: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV bd1_environment_interface/SetAction"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetVectAction.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetVectAction.py: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python code from SRV bd1_environment_interface/SetVectAction"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python code from SRV bd1_environment_interface/GetStateAndReward"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetVectStateAndReward.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetVectStateAndReward.py: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python code from SRV bd1_environment_interface/GetVectStateAndReward"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv
-
 /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/_State.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetAction.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetVectAction.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetVectStateAndReward.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python msg __init__.py for bd1_environment_interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for bd1_environment_interface"
 	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg --initpy
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/_State.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetAction.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetVectAction.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetVectStateAndReward.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python srv __init__.py for bd1_environment_interface"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv --initpy
 
 bd1_environment_interface_generate_messages_py: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py
 bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/_State.py
-bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetAction.py
-bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_SetVectAction.py
-bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetStateAndReward.py
-bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/_GetVectStateAndReward.py
 bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/msg/__init__.py
-bd1_environment_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_environment_interface/srv/__init__.py
 bd1_environment_interface_generate_messages_py: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make
 
 .PHONY : bd1_environment_interface_generate_messages_py

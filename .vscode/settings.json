@@ -3,5 +3,10 @@
         "/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages",
         "/home/trax/personal-projects/BD1/devel/lib/python3/dist-packages",
         "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages",
+        "/home/trax/personal-projects/BD1/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
     ]
 }

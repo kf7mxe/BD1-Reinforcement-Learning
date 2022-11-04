@@ -42,27 +42,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bd1_train/srv" TYPE FILE FILES "/home/trax/personal-projects/bd1-2/src/bd1_train/srv/SaveAgent.srv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bd1_train/cmake" TYPE FILE FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/bd1_train-msg-paths.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/trax/personal-projects/bd1-2/devel/include/bd1_train")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_train")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_train")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_train")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -97,10 +81,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_train" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/standup_train.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_train" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/walk_train_nn_td_learning.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_train" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/standup_train_ppo.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_train" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/walk_train_nn_td_learning_joint_trajectory.py")
 endif()
 

@@ -53,16 +53,6 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 # Include the progress variables for this target.
 include bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/progress.make
 
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv/SetLegs.js
-
-
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv/SetLegs.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv/SetLegs.js: /home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from bd1_simple_moves/SetLegs.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_simple_moves && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_simple_moves -o /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv
-
-bd1_simple_moves_generate_messages_nodejs: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs
-bd1_simple_moves_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_simple_moves/srv/SetLegs.js
 bd1_simple_moves_generate_messages_nodejs: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/build.make
 
 .PHONY : bd1_simple_moves_generate_messages_nodejs

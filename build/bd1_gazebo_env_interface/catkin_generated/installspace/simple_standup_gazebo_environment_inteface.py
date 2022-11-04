@@ -136,5 +136,6 @@ class UniversalGazeboEnvironmentInterface(object):
         rospy.spin()
         
 if __name__ == '__main__' :
+    print("in the simple standup gazebo interface")
     ugei = UniversalGazeboEnvironmentInterface()
     ugei.run()

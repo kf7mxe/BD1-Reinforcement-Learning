@@ -92,6 +92,27 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -113,27 +134,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,21 +181,6 @@ bd1_train_generate_messages: bd1_train/CMakeFiles/bd1_train_generate_messages.di
 bd1_train_generate_messages/fast:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages.dir/build
 .PHONY : bd1_train_generate_messages/fast
-
-# Convenience name for target.
-bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule
-.PHONY : bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule
-
-# Convenience name for target.
-_bd1_train_generate_messages_check_deps_SaveAgent: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule
-
-.PHONY : _bd1_train_generate_messages_check_deps_SaveAgent
-
-# fast build rule for target.
-_bd1_train_generate_messages_check_deps_SaveAgent/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/build.make bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/build
-.PHONY : _bd1_train_generate_messages_check_deps_SaveAgent/fast
 
 # Convenience name for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/rule:
@@ -356,11 +341,8 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... list_install_components"
 	@echo "... bd1_train_generate_messages"
-	@echo "... _bd1_train_generate_messages_check_deps_SaveAgent"
 	@echo "... bd1_train_generate_messages_cpp"
 	@echo "... bd1_train_gennodejs"
 	@echo "... bd1_train_gencpp"
@@ -370,6 +352,8 @@ help:
 	@echo "... bd1_train_genlisp"
 	@echo "... bd1_train_generate_messages_lisp"
 	@echo "... test"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... bd1_train_generate_messages_py"
 	@echo "... bd1_train_genpy"
 .PHONY : help

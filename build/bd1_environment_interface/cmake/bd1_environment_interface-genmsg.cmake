@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "bd1_environment_interface: 1 messages, 4 services")
+message(STATUS "bd1_environment_interface: 1 messages, 0 services")
 
 set(MSG_I_FLAGS "-Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
 
@@ -22,26 +22,6 @@ add_custom_target(_bd1_environment_interface_generate_messages_check_deps_${_fil
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "bd1_environment_interface" "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg" ""
 )
 
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" NAME_WE)
-add_custom_target(_bd1_environment_interface_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "bd1_environment_interface" "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" ""
-)
-
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" NAME_WE)
-add_custom_target(_bd1_environment_interface_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "bd1_environment_interface" "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" ""
-)
-
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" NAME_WE)
-add_custom_target(_bd1_environment_interface_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "bd1_environment_interface" "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" "bd1_environment_interface/State"
-)
-
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" NAME_WE)
-add_custom_target(_bd1_environment_interface_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "bd1_environment_interface" "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" ""
-)
-
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -56,30 +36,6 @@ _generate_msg_cpp(bd1_environment_interface
 )
 
 ### Generating Services
-_generate_srv_cpp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_cpp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_cpp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_cpp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/bd1_environment_interface
-)
 
 ### Generating Module File
 _generate_module_cpp(bd1_environment_interface
@@ -94,14 +50,6 @@ add_dependencies(bd1_environment_interface_generate_messages bd1_environment_int
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_cpp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_cpp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_cpp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_cpp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" NAME_WE)
 add_dependencies(bd1_environment_interface_generate_messages_cpp _bd1_environment_interface_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -121,30 +69,6 @@ _generate_msg_eus(bd1_environment_interface
 )
 
 ### Generating Services
-_generate_srv_eus(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_eus(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_eus(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg"
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_eus(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/bd1_environment_interface
-)
 
 ### Generating Module File
 _generate_module_eus(bd1_environment_interface
@@ -159,14 +83,6 @@ add_dependencies(bd1_environment_interface_generate_messages bd1_environment_int
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_eus _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_eus _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_eus _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_eus _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" NAME_WE)
 add_dependencies(bd1_environment_interface_generate_messages_eus _bd1_environment_interface_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -186,30 +102,6 @@ _generate_msg_lisp(bd1_environment_interface
 )
 
 ### Generating Services
-_generate_srv_lisp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_lisp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_lisp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg"
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_lisp(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/bd1_environment_interface
-)
 
 ### Generating Module File
 _generate_module_lisp(bd1_environment_interface
@@ -224,14 +116,6 @@ add_dependencies(bd1_environment_interface_generate_messages bd1_environment_int
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_lisp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_lisp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_lisp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_lisp _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" NAME_WE)
 add_dependencies(bd1_environment_interface_generate_messages_lisp _bd1_environment_interface_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -251,30 +135,6 @@ _generate_msg_nodejs(bd1_environment_interface
 )
 
 ### Generating Services
-_generate_srv_nodejs(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_nodejs(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_nodejs(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg"
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_nodejs(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/bd1_environment_interface
-)
 
 ### Generating Module File
 _generate_module_nodejs(bd1_environment_interface
@@ -289,14 +149,6 @@ add_dependencies(bd1_environment_interface_generate_messages bd1_environment_int
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_nodejs _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_nodejs _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_nodejs _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_nodejs _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" NAME_WE)
 add_dependencies(bd1_environment_interface_generate_messages_nodejs _bd1_environment_interface_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -316,30 +168,6 @@ _generate_msg_py(bd1_environment_interface
 )
 
 ### Generating Services
-_generate_srv_py(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_py(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_py(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg"
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/bd1_environment_interface
-)
-_generate_srv_py(bd1_environment_interface
-  "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/bd1_environment_interface
-)
 
 ### Generating Module File
 _generate_module_py(bd1_environment_interface
@@ -354,14 +182,6 @@ add_dependencies(bd1_environment_interface_generate_messages bd1_environment_int
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_py _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_py _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_py _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv" NAME_WE)
-add_dependencies(bd1_environment_interface_generate_messages_py _bd1_environment_interface_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv" NAME_WE)
 add_dependencies(bd1_environment_interface_generate_messages_py _bd1_environment_interface_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

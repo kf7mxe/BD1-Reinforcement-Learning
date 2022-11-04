@@ -42,15 +42,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bd1_environment_interface/srv" TYPE FILE FILES
-    "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv"
-    "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv"
-    "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv"
-    "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bd1_environment_interface/cmake" TYPE FILE FILES "/home/trax/personal-projects/bd1-2/build/bd1_environment_interface/catkin_generated/installspace/bd1_environment_interface-msg-paths.cmake")
 endif()
 
@@ -98,6 +89,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_environment_interface" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_environment_interface/catkin_generated/installspace/env_iface_standup.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_environment_interface" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_environment_interface/catkin_generated/installspace/bd1_environment_walk_forward_interface.py")
 endif()
 

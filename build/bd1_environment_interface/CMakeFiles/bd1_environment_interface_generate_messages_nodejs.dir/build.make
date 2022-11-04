@@ -54,10 +54,6 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 include bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/progress.make
 
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/msg/State.js
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetAction.js
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetVectAction.js
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetStateAndReward.js
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetVectStateAndReward.js
 
 
 /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/msg/State.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
@@ -65,33 +61,8 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from bd1_environment_interface/State.msg"
 	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/msg
 
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetAction.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetAction.js: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from bd1_environment_interface/SetAction.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetVectAction.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetVectAction.js: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from bd1_environment_interface/SetVectAction.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetStateAndReward.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetStateAndReward.js: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetStateAndReward.js: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from bd1_environment_interface/GetStateAndReward.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetVectStateAndReward.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
-/home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetVectStateAndReward.js: /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from bd1_environment_interface/GetVectStateAndReward.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_environment_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv -Ibd1_environment_interface:/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_environment_interface -o /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv
-
 bd1_environment_interface_generate_messages_nodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs
 bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/msg/State.js
-bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetAction.js
-bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/SetVectAction.js
-bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetStateAndReward.js
-bd1_environment_interface_generate_messages_nodejs: /home/trax/personal-projects/bd1-2/devel/share/gennodejs/ros/bd1_environment_interface/srv/GetVectStateAndReward.js
 bd1_environment_interface_generate_messages_nodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make
 
 .PHONY : bd1_environment_interface_generate_messages_nodejs

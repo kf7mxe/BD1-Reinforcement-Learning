@@ -53,23 +53,6 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 # Include the progress variables for this target.
 include bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/progress.make
 
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/__init__.py
-
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py: /home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV bd1_simple_moves/SetLegs"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_simple_moves && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_simple_moves -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python srv __init__.py for bd1_simple_moves"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_simple_moves && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv --initpy
-
-bd1_simple_moves_generate_messages_py: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py
-bd1_simple_moves_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/_SetLegs.py
-bd1_simple_moves_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_simple_moves/srv/__init__.py
 bd1_simple_moves_generate_messages_py: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/build.make
 
 .PHONY : bd1_simple_moves_generate_messages_py

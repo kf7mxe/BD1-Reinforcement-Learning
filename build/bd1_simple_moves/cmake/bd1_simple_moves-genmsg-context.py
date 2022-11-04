@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = ""
-services_str = "/home/trax/personal-projects/bd1-2/src/bd1_simple_moves/srv/SetLegs.srv"
+services_str = ""
 pkg_name = "bd1_simple_moves"
 dependencies_str = "std_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

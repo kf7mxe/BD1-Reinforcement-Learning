@@ -56,27 +56,15 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -89,16 +77,6 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -134,6 +112,28 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,21 +181,6 @@ bd1_simple_moves_generate_messages: bd1_simple_moves/CMakeFiles/bd1_simple_moves
 bd1_simple_moves_generate_messages/fast:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/build
 .PHONY : bd1_simple_moves_generate_messages/fast
-
-# Convenience name for target.
-bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule
-.PHONY : bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule
-
-# Convenience name for target.
-_bd1_simple_moves_generate_messages_check_deps_SetLegs: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule
-
-.PHONY : _bd1_simple_moves_generate_messages_check_deps_SetLegs
-
-# fast build rule for target.
-_bd1_simple_moves_generate_messages_check_deps_SetLegs/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/build.make bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/build
-.PHONY : _bd1_simple_moves_generate_messages_check_deps_SetLegs/fast
 
 # Convenience name for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir/rule:
@@ -353,12 +338,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
+	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... bd1_simple_moves_generate_messages"
-	@echo "... list_install_components"
-	@echo "... _bd1_simple_moves_generate_messages_check_deps_SetLegs"
 	@echo "... bd1_simple_moves_geneus"
 	@echo "... install/local"
 	@echo "... bd1_simple_moves_gencpp"
@@ -368,6 +350,8 @@ help:
 	@echo "... bd1_simple_moves_generate_messages_cpp"
 	@echo "... bd1_simple_moves_generate_messages_lisp"
 	@echo "... test"
+	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... bd1_simple_moves_genlisp"
 	@echo "... bd1_simple_moves_generate_messages_nodejs"
 	@echo "... bd1_simple_moves_generate_messages_py"

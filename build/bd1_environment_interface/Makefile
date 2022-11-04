@@ -100,17 +100,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -122,6 +111,17 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target install
 install: preinstall
@@ -168,36 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_gennodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
-
-.PHONY : bd1_environment_interface_gennodejs
-
-# fast build rule for target.
-bd1_environment_interface_gennodejs/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build
-.PHONY : bd1_environment_interface_gennodejs/fast
-
-# Convenience name for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_SetAction: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_SetAction
-
-# fast build rule for target.
-_bd1_environment_interface_generate_messages_check_deps_SetAction/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/build
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_SetAction/fast
-
-# Convenience name for target.
 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/rule:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/rule
 .PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/rule
@@ -211,36 +181,6 @@ _bd1_environment_interface_generate_messages_check_deps_State: bd1_environment_i
 _bd1_environment_interface_generate_messages_check_deps_State/fast:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/build
 .PHONY : _bd1_environment_interface_generate_messages_check_deps_State/fast
-
-# Convenience name for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_GetStateAndReward
-
-# fast build rule for target.
-_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/build
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_GetStateAndReward/fast
-
-# Convenience name for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_generate_messages_nodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
-
-.PHONY : bd1_environment_interface_generate_messages_nodejs
-
-# fast build rule for target.
-bd1_environment_interface_generate_messages_nodejs/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build
-.PHONY : bd1_environment_interface_generate_messages_nodejs/fast
 
 # Convenience name for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/rule:
@@ -288,34 +228,79 @@ bd1_environment_interface_gencpp/fast:
 .PHONY : bd1_environment_interface_gencpp/fast
 
 # Convenience name for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
 
 # Convenience name for target.
-bd1_environment_interface_generate_messages_py: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
+bd1_environment_interface_generate_messages: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
 
-.PHONY : bd1_environment_interface_generate_messages_py
+.PHONY : bd1_environment_interface_generate_messages
 
 # fast build rule for target.
-bd1_environment_interface_generate_messages_py/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build
-.PHONY : bd1_environment_interface_generate_messages_py/fast
+bd1_environment_interface_generate_messages/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build
+.PHONY : bd1_environment_interface_generate_messages/fast
 
 # Convenience name for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_SetVectAction: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule
+bd1_environment_interface_generate_messages_lisp: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
 
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_SetVectAction
+.PHONY : bd1_environment_interface_generate_messages_lisp
 
 # fast build rule for target.
-_bd1_environment_interface_generate_messages_check_deps_SetVectAction/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/build
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_SetVectAction/fast
+bd1_environment_interface_generate_messages_lisp/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build
+.PHONY : bd1_environment_interface_generate_messages_lisp/fast
+
+# Convenience name for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_genlisp: bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
+
+.PHONY : bd1_environment_interface_genlisp
+
+# fast build rule for target.
+bd1_environment_interface_genlisp/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/build
+.PHONY : bd1_environment_interface_genlisp/fast
+
+# Convenience name for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_generate_messages_nodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
+
+.PHONY : bd1_environment_interface_generate_messages_nodejs
+
+# fast build rule for target.
+bd1_environment_interface_generate_messages_nodejs/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build
+.PHONY : bd1_environment_interface_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_gennodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
+
+.PHONY : bd1_environment_interface_gennodejs
+
+# fast build rule for target.
+bd1_environment_interface_gennodejs/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build
+.PHONY : bd1_environment_interface_gennodejs/fast
 
 # Convenience name for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule:
@@ -348,64 +333,19 @@ bd1_environment_interface_geneus/fast:
 .PHONY : bd1_environment_interface_geneus/fast
 
 # Convenience name for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
 
 # Convenience name for target.
-bd1_environment_interface_generate_messages: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
+bd1_environment_interface_generate_messages_py: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
 
-.PHONY : bd1_environment_interface_generate_messages
+.PHONY : bd1_environment_interface_generate_messages_py
 
 # fast build rule for target.
-bd1_environment_interface_generate_messages/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build
-.PHONY : bd1_environment_interface_generate_messages/fast
-
-# Convenience name for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward
-
-# fast build rule for target.
-_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/build
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward/fast
-
-# Convenience name for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_generate_messages_lisp: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
-
-.PHONY : bd1_environment_interface_generate_messages_lisp
-
-# fast build rule for target.
-bd1_environment_interface_generate_messages_lisp/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build
-.PHONY : bd1_environment_interface_generate_messages_lisp/fast
-
-# Convenience name for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_genlisp: bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
-
-.PHONY : bd1_environment_interface_genlisp
-
-# fast build rule for target.
-bd1_environment_interface_genlisp/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/build
-.PHONY : bd1_environment_interface_genlisp/fast
+bd1_environment_interface_generate_messages_py/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build
+.PHONY : bd1_environment_interface_generate_messages_py/fast
 
 # Help Target
 help:
@@ -417,25 +357,21 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... bd1_environment_interface_gennodejs"
-	@echo "... _bd1_environment_interface_generate_messages_check_deps_SetAction"
 	@echo "... install/local"
 	@echo "... _bd1_environment_interface_generate_messages_check_deps_State"
-	@echo "... _bd1_environment_interface_generate_messages_check_deps_GetStateAndReward"
-	@echo "... bd1_environment_interface_generate_messages_nodejs"
 	@echo "... bd1_environment_interface_genpy"
 	@echo "... bd1_environment_interface_generate_messages_cpp"
 	@echo "... bd1_environment_interface_gencpp"
-	@echo "... bd1_environment_interface_generate_messages_py"
-	@echo "... _bd1_environment_interface_generate_messages_check_deps_SetVectAction"
-	@echo "... bd1_environment_interface_generate_messages_eus"
-	@echo "... bd1_environment_interface_geneus"
+	@echo "... test"
 	@echo "... install"
 	@echo "... bd1_environment_interface_generate_messages"
-	@echo "... _bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward"
 	@echo "... bd1_environment_interface_generate_messages_lisp"
 	@echo "... bd1_environment_interface_genlisp"
+	@echo "... bd1_environment_interface_generate_messages_nodejs"
+	@echo "... bd1_environment_interface_gennodejs"
+	@echo "... bd1_environment_interface_generate_messages_eus"
+	@echo "... bd1_environment_interface_geneus"
+	@echo "... bd1_environment_interface_generate_messages_py"
 .PHONY : help
 
 

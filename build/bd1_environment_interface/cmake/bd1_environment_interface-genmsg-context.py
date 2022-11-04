@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/msg/State.msg"
-services_str = "/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetAction.srv;/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/SetVectAction.srv;/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetStateAndReward.srv;/home/trax/personal-projects/bd1-2/src/bd1_environment_interface/srv/GetVectStateAndReward.srv"
+services_str = ""
 pkg_name = "bd1_environment_interface"
 dependencies_str = "std_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

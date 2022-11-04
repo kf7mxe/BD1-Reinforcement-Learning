@@ -147,22 +147,18 @@ bd1_environment_interface/preinstall:
 .PHONY : bd1_environment_interface/preinstall
 
 # Recursive "clean" directory target.
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/clean
-bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/clean
 bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/clean
+bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean
+bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean
+bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean
+bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean
+bd1_environment_interface/clean: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean
 
 .PHONY : bd1_environment_interface/clean
 
@@ -239,7 +235,6 @@ bd1_simple_moves/preinstall:
 
 # Recursive "clean" directory target.
 bd1_simple_moves/clean: bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/clean
-bd1_simple_moves/clean: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/clean
 bd1_simple_moves/clean: bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir/clean
 bd1_simple_moves/clean: bd1_simple_moves/CMakeFiles/bd1_simple_moves_gencpp.dir/clean
 bd1_simple_moves/clean: bd1_simple_moves/CMakeFiles/bd1_simple_moves_gennodejs.dir/clean
@@ -268,7 +263,6 @@ bd1_train/preinstall:
 
 # Recursive "clean" directory target.
 bd1_train/clean: bd1_train/CMakeFiles/bd1_train_generate_messages.dir/clean
-bd1_train/clean: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/clean
 bd1_train/clean: bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/clean
 bd1_train/clean: bd1_train/CMakeFiles/bd1_train_gennodejs.dir/clean
 bd1_train/clean: bd1_train/CMakeFiles/bd1_train_gencpp.dir/clean
@@ -482,7 +476,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmoc
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=59,60 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=26,27 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -509,7 +503,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/clean:
 gtest/googlemock/CMakeFiles/gmock.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=57,58 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=24,25 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -536,7 +530,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/clean:
 gtest/googletest/CMakeFiles/gtest_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=63,64 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=30,31 "Built target gtest_main"
 .PHONY : gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -563,7 +557,7 @@ gtest/googletest/CMakeFiles/gtest_main.dir/clean:
 gtest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=61,62 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=28,29 "Built target gtest"
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -719,60 +713,6 @@ bd1_config/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
 .PHONY : bd1_config/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_environment_interface_gennodejs"
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_gennodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
-
-.PHONY : bd1_environment_interface_gennodejs
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean
-
-#=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target _bd1_environment_interface_generate_messages_check_deps_SetAction"
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_SetAction: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_SetAction
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/clean
-
-#=============================================================================
 # Target rules for target bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir
 
 # All Build rule for target.
@@ -800,65 +740,6 @@ bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_message
 .PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/clean
 
 #=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target _bd1_environment_interface_generate_messages_check_deps_GetStateAndReward"
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_GetStateAndReward
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/clean
-
-#=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=17,18,19,20,21 "Built target bd1_environment_interface_generate_messages_nodejs"
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_generate_messages_nodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
-
-.PHONY : bd1_environment_interface_generate_messages_nodejs
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean
-
-#=============================================================================
 # Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir
 
 # All Build rule for target.
@@ -870,7 +751,7 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/all: bd
 
 # Build rule for subdir invocation for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/rule
@@ -890,19 +771,15 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_genpy.dir/clean:
 
 # All Build rule for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/depend
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target bd1_environment_interface_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=1 "Built target bd1_environment_interface_generate_messages_cpp"
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/rule
@@ -929,7 +806,7 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/all: b
 
 # Build rule for subdir invocation for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/rule
@@ -945,132 +822,14 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/clean:
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gencpp.dir/clean
 
 #=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_py.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=22,23,24,25,26,27,28 "Built target bd1_environment_interface_generate_messages_py"
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_generate_messages_py: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
-
-.PHONY : bd1_environment_interface_generate_messages_py
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean
-
-#=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target _bd1_environment_interface_generate_messages_check_deps_SetVectAction"
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_SetVectAction: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_SetVectAction
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/clean
-
-#=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=6,7,8,9,10,11 "Built target bd1_environment_interface_generate_messages_eus"
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_generate_messages_eus: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule
-
-.PHONY : bd1_environment_interface_generate_messages_eus
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean
-
-#=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_environment_interface_geneus"
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/rule
-
-# Convenience name for target.
-bd1_environment_interface_geneus: bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/rule
-
-.PHONY : bd1_environment_interface_geneus
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean
-
-#=============================================================================
 # Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir
 
 # All Build rule for target.
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_cpp.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/depend
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_environment_interface_generate_messages"
@@ -1078,7 +837,7 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages
 
 # Build rule for subdir invocation for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/rule
@@ -1094,50 +853,19 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages.dir/clean
 
 #=============================================================================
-# Target rules for target bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir
-
-# All Build rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/depend
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target _bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward"
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule
-
-# Convenience name for target.
-_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/rule
-
-.PHONY : _bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward
-
-# clean rule for target.
-bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/clean:
-	$(MAKE) -f bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/build.make bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/clean
-.PHONY : bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/clean
-
-#=============================================================================
 # Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir
 
 # All Build rule for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetAction.dir/all
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetStateAndReward.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_SetVectAction.dir/all
-bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_GetVectStateAndReward.dir/all
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/depend
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=12,13,14,15,16 "Built target bd1_environment_interface_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=4 "Built target bd1_environment_interface_generate_messages_lisp"
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_lisp.dir/rule
@@ -1164,7 +892,7 @@ bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/all: 
 
 # Build rule for subdir invocation for target.
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/rule
@@ -1178,6 +906,144 @@ bd1_environment_interface_genlisp: bd1_environment_interface/CMakeFiles/bd1_envi
 bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/clean:
 	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/clean
 .PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_genlisp.dir/clean
+
+#=============================================================================
+# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir
+
+# All Build rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/depend
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=5 "Built target bd1_environment_interface_generate_messages_nodejs"
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_generate_messages_nodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/rule
+
+.PHONY : bd1_environment_interface_generate_messages_nodejs
+
+# clean rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/clean
+
+#=============================================================================
+# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir
+
+# All Build rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_nodejs.dir/all
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/depend
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_environment_interface_gennodejs"
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_gennodejs: bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/rule
+
+.PHONY : bd1_environment_interface_gennodejs
+
+# clean rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean:
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_gennodejs.dir/clean
+
+#=============================================================================
+# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir
+
+# All Build rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/depend
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=2,3 "Built target bd1_environment_interface_generate_messages_eus"
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_generate_messages_eus: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/rule
+
+.PHONY : bd1_environment_interface_generate_messages_eus
+
+# clean rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean:
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/clean
+
+#=============================================================================
+# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir
+
+# All Build rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/all: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_eus.dir/all
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/depend
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_environment_interface_geneus"
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_geneus: bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/rule
+
+.PHONY : bd1_environment_interface_geneus
+
+# clean rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean:
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_geneus.dir/clean
+
+#=============================================================================
+# Target rules for target bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir
+
+# All Build rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_py.dir/all
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all: bd1_environment_interface/CMakeFiles/_bd1_environment_interface_generate_messages_check_deps_State.dir/all
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/depend
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=6,7 "Built target bd1_environment_interface_generate_messages_py"
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
+
+# Convenience name for target.
+bd1_environment_interface_generate_messages_py: bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/rule
+
+.PHONY : bd1_environment_interface_generate_messages_py
+
+# clean rule for target.
+bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean:
+	$(MAKE) -f bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/build.make bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean
+.PHONY : bd1_environment_interface/CMakeFiles/bd1_environment_interface_generate_messages_py.dir/clean
 
 #=============================================================================
 # Target rules for target bd1_fall_detector/CMakeFiles/roscpp_generate_messages_cpp.dir
@@ -1267,7 +1133,7 @@ bd1_fall_detector/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
 bd1_fall_detector/CMakeFiles/fall_detector_contacts.dir/all:
 	$(MAKE) -f bd1_fall_detector/CMakeFiles/fall_detector_contacts.dir/build.make bd1_fall_detector/CMakeFiles/fall_detector_contacts.dir/depend
 	$(MAKE) -f bd1_fall_detector/CMakeFiles/fall_detector_contacts.dir/build.make bd1_fall_detector/CMakeFiles/fall_detector_contacts.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=55,56 "Built target fall_detector_contacts"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=22,23 "Built target fall_detector_contacts"
 .PHONY : bd1_fall_detector/CMakeFiles/fall_detector_contacts.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1597,7 +1463,7 @@ bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_p
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/all: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/depend
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=38,39,40 "Built target bd1_gazebo_env_interface_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=17,18,19 "Built target bd1_gazebo_env_interface_generate_messages_py"
 .PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1680,7 +1546,7 @@ bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_l
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/all: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/depend
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=34,35 "Built target bd1_gazebo_env_interface_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=13,14 "Built target bd1_gazebo_env_interface_generate_messages_lisp"
 .PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1763,7 +1629,7 @@ bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_c
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_cpp.dir/all: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_cpp.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_cpp.dir/depend
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_cpp.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=29,30 "Built target bd1_gazebo_env_interface_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=8,9 "Built target bd1_gazebo_env_interface_generate_messages_cpp"
 .PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1792,7 +1658,7 @@ bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_e
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/all: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/depend
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=31,32,33 "Built target bd1_gazebo_env_interface_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=10,11,12 "Built target bd1_gazebo_env_interface_generate_messages_eus"
 .PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1821,7 +1687,7 @@ bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_n
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/all: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/all
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/depend
 	$(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=36,37 "Built target bd1_gazebo_env_interface_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=15,16 "Built target bd1_gazebo_env_interface_generate_messages_nodejs"
 .PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1857,7 +1723,7 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/all: bd1_simp
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/rule
@@ -1873,33 +1739,6 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/clean:
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages.dir/clean
 
 #=============================================================================
-# Target rules for target bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir
-
-# All Build rule for target.
-bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all:
-	$(MAKE) -f bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/build.make bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/depend
-	$(MAKE) -f bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/build.make bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target _bd1_simple_moves_generate_messages_check_deps_SetLegs"
-.PHONY : bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule
-
-# Convenience name for target.
-_bd1_simple_moves_generate_messages_check_deps_SetLegs: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/rule
-
-.PHONY : _bd1_simple_moves_generate_messages_check_deps_SetLegs
-
-# clean rule for target.
-bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/clean:
-	$(MAKE) -f bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/build.make bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/clean
-.PHONY : bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/clean
-
-#=============================================================================
 # Target rules for target bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir
 
 # All Build rule for target.
@@ -1911,7 +1750,7 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir/all: bd1_simple_moves/CM
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_geneus.dir/rule
@@ -1938,7 +1777,7 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_gencpp.dir/all: bd1_simple_moves/CM
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_gencpp.dir/rule
@@ -1965,7 +1804,7 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_gennodejs.dir/all: bd1_simple_moves
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_gennodejs.dir/rule
@@ -1985,15 +1824,14 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_gennodejs.dir/clean:
 
 # All Build rule for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/all: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/depend
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=42,43 "Built target bd1_simple_moves_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=20 "Built target bd1_simple_moves_generate_messages_eus"
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/rule
@@ -2013,15 +1851,14 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_eus.dir/clean:
 
 # All Build rule for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/all: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/depend
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=41 "Built target bd1_simple_moves_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_simple_moves_generate_messages_cpp"
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/rule
@@ -2041,15 +1878,14 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_cpp.dir/clean:
 
 # All Build rule for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/all: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/depend
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=44 "Built target bd1_simple_moves_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_simple_moves_generate_messages_lisp"
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_lisp.dir/rule
@@ -2076,7 +1912,7 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_genlisp.dir/all: bd1_simple_moves/C
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_genlisp.dir/rule
@@ -2096,15 +1932,14 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_genlisp.dir/clean:
 
 # All Build rule for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/all: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/depend
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=45 "Built target bd1_simple_moves_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_simple_moves_generate_messages_nodejs"
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/rule
@@ -2124,15 +1959,14 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_nodejs.dir/clean:
 
 # All Build rule for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_py.dir/all
-bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/all: bd1_simple_moves/CMakeFiles/_bd1_simple_moves_generate_messages_check_deps_SetLegs.dir/all
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/depend
 	$(MAKE) -f bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/build.make bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=46,47 "Built target bd1_simple_moves_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_simple_moves_generate_messages_py"
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_generate_messages_py.dir/rule
@@ -2159,7 +1993,7 @@ bd1_simple_moves/CMakeFiles/bd1_simple_moves_genpy.dir/all: bd1_simple_moves/CMa
 
 # Build rule for subdir invocation for target.
 bd1_simple_moves/CMakeFiles/bd1_simple_moves_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_simple_moves/CMakeFiles/bd1_simple_moves_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_simple_moves/CMakeFiles/bd1_simple_moves_genpy.dir/rule
@@ -2190,7 +2024,7 @@ bd1_train/CMakeFiles/bd1_train_generate_messages.dir/all: bd1_train/CMakeFiles/b
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages.dir/rule
@@ -2206,46 +2040,18 @@ bd1_train/CMakeFiles/bd1_train_generate_messages.dir/clean:
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages.dir/clean
 
 #=============================================================================
-# Target rules for target bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir
-
-# All Build rule for target.
-bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all:
-	$(MAKE) -f bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/build.make bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/depend
-	$(MAKE) -f bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/build.make bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target _bd1_train_generate_messages_check_deps_SaveAgent"
-.PHONY : bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
-
-# Build rule for subdir invocation for target.
-bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
-.PHONY : bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule
-
-# Convenience name for target.
-_bd1_train_generate_messages_check_deps_SaveAgent: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/rule
-
-.PHONY : _bd1_train_generate_messages_check_deps_SaveAgent
-
-# clean rule for target.
-bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/clean:
-	$(MAKE) -f bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/build.make bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/clean
-.PHONY : bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/clean
-
-#=============================================================================
 # Target rules for target bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir
 
 # All Build rule for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/all: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/depend
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=48 "Built target bd1_train_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_train_generate_messages_cpp"
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_cpp.dir/rule
@@ -2272,7 +2078,7 @@ bd1_train/CMakeFiles/bd1_train_gennodejs.dir/all: bd1_train/CMakeFiles/bd1_train
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_gennodejs.dir/rule
@@ -2299,7 +2105,7 @@ bd1_train/CMakeFiles/bd1_train_gencpp.dir/all: bd1_train/CMakeFiles/bd1_train_ge
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_gencpp.dir/rule
@@ -2319,15 +2125,14 @@ bd1_train/CMakeFiles/bd1_train_gencpp.dir/clean:
 
 # All Build rule for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_eus.dir/all
-bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/all: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/depend
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=49,50 "Built target bd1_train_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=21 "Built target bd1_train_generate_messages_eus"
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_eus.dir/rule
@@ -2354,7 +2159,7 @@ bd1_train/CMakeFiles/bd1_train_geneus.dir/all: bd1_train/CMakeFiles/bd1_train_ge
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_geneus.dir/rule
@@ -2374,15 +2179,14 @@ bd1_train/CMakeFiles/bd1_train_geneus.dir/clean:
 
 # All Build rule for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/all: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/depend
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=52 "Built target bd1_train_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_train_generate_messages_nodejs"
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_nodejs.dir/rule
@@ -2409,7 +2213,7 @@ bd1_train/CMakeFiles/bd1_train_genlisp.dir/all: bd1_train/CMakeFiles/bd1_train_g
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_genlisp.dir/rule
@@ -2429,15 +2233,14 @@ bd1_train/CMakeFiles/bd1_train_genlisp.dir/clean:
 
 # All Build rule for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/all: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/depend
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=51 "Built target bd1_train_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_train_generate_messages_lisp"
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/rule
@@ -2457,15 +2260,14 @@ bd1_train/CMakeFiles/bd1_train_generate_messages_lisp.dir/clean:
 
 # All Build rule for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/all: bd1_config/CMakeFiles/std_msgs_generate_messages_py.dir/all
-bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/all: bd1_train/CMakeFiles/_bd1_train_generate_messages_check_deps_SaveAgent.dir/all
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/depend
 	$(MAKE) -f bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/build.make bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=53,54 "Built target bd1_train_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num= "Built target bd1_train_generate_messages_py"
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_generate_messages_py.dir/rule
@@ -2492,7 +2294,7 @@ bd1_train/CMakeFiles/bd1_train_genpy.dir/all: bd1_train/CMakeFiles/bd1_train_gen
 
 # Build rule for subdir invocation for target.
 bd1_train/CMakeFiles/bd1_train_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 bd1_train/CMakeFiles/bd1_train_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trax/personal-projects/bd1-2/build/CMakeFiles 0
 .PHONY : bd1_train/CMakeFiles/bd1_train_genpy.dir/rule
