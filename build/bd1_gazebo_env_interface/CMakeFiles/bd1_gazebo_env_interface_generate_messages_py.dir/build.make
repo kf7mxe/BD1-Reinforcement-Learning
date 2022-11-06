@@ -53,30 +53,14 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 # Include the progress variables for this target.
 include bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/progress.make
 
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Step.py
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Reset.py
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/__init__.py
 
 
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Step.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Step.py: /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV bd1_gazebo_env_interface/Step"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_gazebo_env_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Reset.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Reset.py: /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV bd1_gazebo_env_interface/Reset"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_gazebo_env_interface -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv
-
 /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Step.py
-/home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/__init__.py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Reset.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python srv __init__.py for bd1_gazebo_env_interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python srv __init__.py for bd1_gazebo_env_interface"
 	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv --initpy
 
 bd1_gazebo_env_interface_generate_messages_py: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py
-bd1_gazebo_env_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Step.py
-bd1_gazebo_env_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/_Reset.py
 bd1_gazebo_env_interface_generate_messages_py: /home/trax/personal-projects/bd1-2/devel/lib/python3/dist-packages/bd1_gazebo_env_interface/srv/__init__.py
 bd1_gazebo_env_interface_generate_messages_py: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build.make
 

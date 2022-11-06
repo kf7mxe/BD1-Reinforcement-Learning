@@ -53,28 +53,14 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 # Include the progress variables for this target.
 include bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/progress.make
 
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Step.l
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Reset.l
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/manifest.l
 
 
-/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Step.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Step.l: /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from bd1_gazebo_env_interface/Step.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_gazebo_env_interface -o /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Reset.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-/home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Reset.l: /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from bd1_gazebo_env_interface/Reset.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_gazebo_env_interface -o /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv
-
 /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for bd1_gazebo_env_interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp manifest code for bd1_gazebo_env_interface"
 	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface bd1_gazebo_env_interface std_msgs
 
 bd1_gazebo_env_interface_generate_messages_eus: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus
-bd1_gazebo_env_interface_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Step.l
-bd1_gazebo_env_interface_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/srv/Reset.l
 bd1_gazebo_env_interface_generate_messages_eus: /home/trax/personal-projects/bd1-2/devel/share/roseus/ros/bd1_gazebo_env_interface/manifest.l
 bd1_gazebo_env_interface_generate_messages_eus: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_eus.dir/build.make
 

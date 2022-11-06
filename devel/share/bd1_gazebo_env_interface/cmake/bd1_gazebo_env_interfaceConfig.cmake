@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(bd1_gazebo_env_interface_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/trax/personal-projects/bd1-2/devel/include " STREQUAL " ")
+if(NOT " " STREQUAL " ")
   set(bd1_gazebo_env_interface_INCLUDE_DIRS "")
-  set(_include_dirs "/home/trax/personal-projects/bd1-2/devel/include")
+  set(_include_dirs "")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")

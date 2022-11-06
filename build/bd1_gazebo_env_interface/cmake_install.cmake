@@ -38,13 +38,6 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bd1_gazebo_env_interface/srv" TYPE FILE FILES
-    "/home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv"
-    "/home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/bd1_gazebo_env_interface/cmake" TYPE FILE FILES "/home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface/catkin_generated/installspace/bd1_gazebo_env_interface-msg-paths.cmake")
 endif()
 

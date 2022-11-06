@@ -1,2 +1,2 @@
 bd1_config:bd1_description:bd1_environment_interface:bd1_fall_detector:bd1_gazebo_env_interface:bd1_simple_moves:bd1_train
--DPYTHON_EXECUTABLE=/usr/bin/python3 -DCATKIN_DEVEL_PREFIX=/home/trax/personal-projects/bd1-2/devel -DCMAKE_INSTALL_PREFIX=/home/trax/personal-projects/bd1-2/install -G Unix Makefiles
+-DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DCATKIN_DEVEL_PREFIX=/home/trax/personal-projects/bd1-2/devel -DCMAKE_INSTALL_PREFIX=/home/trax/personal-projects/bd1-2/install -G Unix Makefiles

@@ -53,23 +53,6 @@ CMAKE_BINARY_DIR = /home/trax/personal-projects/bd1-2/build
 # Include the progress variables for this target.
 include bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/progress.make
 
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp: /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Step.lisp
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp: /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Reset.lisp
-
-
-/home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Step.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
-/home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Step.lisp: /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from bd1_gazebo_env_interface/Step.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Step.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_gazebo_env_interface -o /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv
-
-/home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Reset.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
-/home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Reset.lisp: /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/trax/personal-projects/bd1-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from bd1_gazebo_env_interface/Reset.srv"
-	cd /home/trax/personal-projects/bd1-2/build/bd1_gazebo_env_interface && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/trax/personal-projects/bd1-2/src/bd1_gazebo_env_interface/srv/Reset.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p bd1_gazebo_env_interface -o /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv
-
-bd1_gazebo_env_interface_generate_messages_lisp: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp
-bd1_gazebo_env_interface_generate_messages_lisp: /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Step.lisp
-bd1_gazebo_env_interface_generate_messages_lisp: /home/trax/personal-projects/bd1-2/devel/share/common-lisp/ros/bd1_gazebo_env_interface/srv/Reset.lisp
 bd1_gazebo_env_interface_generate_messages_lisp: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_lisp.dir/build.make
 
 .PHONY : bd1_gazebo_env_interface_generate_messages_lisp

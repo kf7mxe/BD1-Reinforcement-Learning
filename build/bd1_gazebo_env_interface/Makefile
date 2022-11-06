@@ -90,6 +90,18 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -122,18 +134,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,81 +181,6 @@ bd1_gazebo_env_interface_generate_messages: bd1_gazebo_env_interface/CMakeFiles/
 bd1_gazebo_env_interface_generate_messages/fast:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages.dir/build
 .PHONY : bd1_gazebo_env_interface_generate_messages/fast
-
-# Convenience name for target.
-bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Step.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Step.dir/rule
-.PHONY : bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Step.dir/rule
-
-# Convenience name for target.
-_bd1_gazebo_env_interface_generate_messages_check_deps_Step: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Step.dir/rule
-
-.PHONY : _bd1_gazebo_env_interface_generate_messages_check_deps_Step
-
-# fast build rule for target.
-_bd1_gazebo_env_interface_generate_messages_check_deps_Step/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Step.dir/build.make bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Step.dir/build
-.PHONY : _bd1_gazebo_env_interface_generate_messages_check_deps_Step/fast
-
-# Convenience name for target.
-bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/rule
-.PHONY : bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/rule
-
-# Convenience name for target.
-_bd1_gazebo_env_interface_generate_messages_check_deps_Reset: bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/rule
-
-.PHONY : _bd1_gazebo_env_interface_generate_messages_check_deps_Reset
-
-# fast build rule for target.
-_bd1_gazebo_env_interface_generate_messages_check_deps_Reset/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/build.make bd1_gazebo_env_interface/CMakeFiles/_bd1_gazebo_env_interface_generate_messages_check_deps_Reset.dir/build
-.PHONY : _bd1_gazebo_env_interface_generate_messages_check_deps_Reset/fast
-
-# Convenience name for target.
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule
-.PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule
-
-# Convenience name for target.
-bd1_gazebo_env_interface_geneus: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule
-
-.PHONY : bd1_gazebo_env_interface_geneus
-
-# fast build rule for target.
-bd1_gazebo_env_interface_geneus/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/build
-.PHONY : bd1_gazebo_env_interface_geneus/fast
-
-# Convenience name for target.
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule
-.PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule
-
-# Convenience name for target.
-bd1_gazebo_env_interface_generate_messages_py: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule
-
-.PHONY : bd1_gazebo_env_interface_generate_messages_py
-
-# fast build rule for target.
-bd1_gazebo_env_interface_generate_messages_py/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build
-.PHONY : bd1_gazebo_env_interface_generate_messages_py/fast
-
-# Convenience name for target.
-bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule
-.PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule
-
-# Convenience name for target.
-bd1_gazebo_env_interface_genlisp: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule
-
-.PHONY : bd1_gazebo_env_interface_genlisp
-
-# fast build rule for target.
-bd1_gazebo_env_interface_genlisp/fast:
-	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/build
-.PHONY : bd1_gazebo_env_interface_genlisp/fast
 
 # Convenience name for target.
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_gencpp.dir/rule:
@@ -348,6 +273,36 @@ bd1_gazebo_env_interface_generate_messages_eus/fast:
 .PHONY : bd1_gazebo_env_interface_generate_messages_eus/fast
 
 # Convenience name for target.
+bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule
+.PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule
+
+# Convenience name for target.
+bd1_gazebo_env_interface_geneus: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/rule
+
+.PHONY : bd1_gazebo_env_interface_geneus
+
+# fast build rule for target.
+bd1_gazebo_env_interface_geneus/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_geneus.dir/build
+.PHONY : bd1_gazebo_env_interface_geneus/fast
+
+# Convenience name for target.
+bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule
+.PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule
+
+# Convenience name for target.
+bd1_gazebo_env_interface_generate_messages_py: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/rule
+
+.PHONY : bd1_gazebo_env_interface_generate_messages_py
+
+# fast build rule for target.
+bd1_gazebo_env_interface_generate_messages_py/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_py.dir/build
+.PHONY : bd1_gazebo_env_interface_generate_messages_py/fast
+
+# Convenience name for target.
 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/rule:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/rule
 .PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/rule
@@ -362,6 +317,21 @@ bd1_gazebo_env_interface_generate_messages_nodejs/fast:
 	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_generate_messages_nodejs.dir/build
 .PHONY : bd1_gazebo_env_interface_generate_messages_nodejs/fast
 
+# Convenience name for target.
+bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f CMakeFiles/Makefile2 bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule
+.PHONY : bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule
+
+# Convenience name for target.
+bd1_gazebo_env_interface_genlisp: bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/rule
+
+.PHONY : bd1_gazebo_env_interface_genlisp
+
+# fast build rule for target.
+bd1_gazebo_env_interface_genlisp/fast:
+	cd /home/trax/personal-projects/bd1-2/build && $(MAKE) -f bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/build.make bd1_gazebo_env_interface/CMakeFiles/bd1_gazebo_env_interface_genlisp.dir/build
+.PHONY : bd1_gazebo_env_interface_genlisp/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -371,15 +341,7 @@ help:
 	@echo "... install/strip"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... test"
 	@echo "... bd1_gazebo_env_interface_generate_messages"
-	@echo "... _bd1_gazebo_env_interface_generate_messages_check_deps_Step"
-	@echo "... _bd1_gazebo_env_interface_generate_messages_check_deps_Reset"
-	@echo "... bd1_gazebo_env_interface_geneus"
-	@echo "... bd1_gazebo_env_interface_generate_messages_py"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... bd1_gazebo_env_interface_genlisp"
 	@echo "... bd1_gazebo_env_interface_gencpp"
 	@echo "... bd1_gazebo_env_interface_generate_messages_lisp"
 	@echo "... install/local"
@@ -387,7 +349,13 @@ help:
 	@echo "... bd1_gazebo_env_interface_genpy"
 	@echo "... bd1_gazebo_env_interface_generate_messages_cpp"
 	@echo "... bd1_gazebo_env_interface_generate_messages_eus"
+	@echo "... bd1_gazebo_env_interface_geneus"
+	@echo "... bd1_gazebo_env_interface_generate_messages_py"
 	@echo "... bd1_gazebo_env_interface_generate_messages_nodejs"
+	@echo "... test"
+	@echo "... rebuild_cache"
+	@echo "... bd1_gazebo_env_interface_genlisp"
+	@echo "... edit_cache"
 .PHONY : help
 
 

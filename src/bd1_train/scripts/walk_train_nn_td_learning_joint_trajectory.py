@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from collections import deque
 import random
 import rospy
@@ -13,120 +14,129 @@ from std_srvs.srv import Empty
 from gazebo_msgs.srv import SetModelState, GetModelState, SpawnModel, DeleteModel, SetModelConfiguration
 
 from gazebo_msgs.msg import ModelStates
-# import torch
+import torch
+import matplotlib.pyplot as plt
 
-# class QualityNN(torch.nn.Module):
-#     def __init__(self, observation_space, action_space):
-#         super(QualityNN, self).__init__()
-#         self.observation_space = observation_space
-#         self.action_space = action_space
-#         self.fc1 = torch.nn.Linear(observation_space, 128)
-#         self.fc2 = torch.nn.Linear(128, 128)
-#         self.fc3 = torch.nn.Linear(128, action_space)
-#         self.relu = torch.nn.ReLU()
+class QualityNN(torch.nn.Module):
+    def __init__(self, observation_space, action_space):
+        super(QualityNN, self).__init__()
+        self.observation_space = observation_space
+        self.action_space = action_space
+        self.fc1 = torch.nn.Linear(observation_space, 128)
+        self.fc2 = torch.nn.Linear(128, 128)
+        self.fc3 = torch.nn.Linear(128, action_space)
 
-#     def forward(self, x):
-#         x = self.relu(self.fc1(x))
-#         x = self.relu(self.fc2(x))
-#         x = self.fc3(x)
-#         return x
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.fc2(x)
+        x = self.fc3(x)
+        return x
 
-# class Memory(object):
-#     def __init__(self, max_size=100):
-#         self.memory = deque(maxlen=max_size)
+class Memory(object):
+    def __init__(self, max_size=100):
+        self.memory = deque(maxlen=max_size)
 
-#     def push(self, element):
-#         self.memory.append(element)
+    def push(self, element):
+        self.memory.append(element)
 
-#     def get_batch(self, batch_size):
-#         batch = []
-#         for i in range(batch_size):
-#             batch.append(self.memory[np.random.randint(len(self.memory))])
-#         return batch
+    def get_batch(self, batch_size):
+       if batch_size > len(self.memory):
+            batch_size = len(self.memory)
+       return random.sample(self.memory, batch_size)
 
-#     def __repr__(self):
-#         return f"Current elements in memory: {len(self.memory)}"
+    def __repr__(self):
+        return f"Current elements in memory: {len(self.memory)}"
 
-#     def __len__(self):
-#         return len(self.memory)
+    def __len__(self):
+        return len(self.memory)
 
-# class Agent(object):
-#         def __init__(self, environment):
-#             self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-#             self.model = QualityNN(environment.observation_space.shape[0], environment.action_space.n).to(self.device)
-#             self.optimizer = torch.optim.Adam(self.model.parameters(), lr=3e-3)
+class Agent(object):
+        def __init__(self, environment):
+            self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+            self.model = QualityNN(environment.observation_space, environment.action_space).to(self.device)
+            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=3e-3)
+            self.env = environment
+            self.decay = 0.995
+            self.randomness = 1.00
+            self.min_randomness = 0.001
 
-#             self.decay = 0.995
-#             self.randomness = 1.00
-#             self.min_randomness = 0.001
+        def act(self, state):
+            # move the state to a Torch Tensor
 
-#         def act(self, state):
-#             # move the state to a Torch Tensor
-#             state = torch.from_numpy(state).to(self.device)
+            #convert numpy array to torch tensor
+            state = torch.tensor(state).float().to(self.device)
 
-#             # find the quality of both actions
-#             qualities = self.model(state).cpu()
+            # state = torch.from_numpy(state).to(self.device)
 
-#             # sometimes take a random action
-#             if np.random.rand() <= self.randomness:
-#                 action = np.random.randint(low=0, high=qualities.size(dim=0))
-#             else:
-#                 action = torch.argmax(qualities).item()
+            # find the quality of both actions
+            qualities = self.model(state).cpu()
 
-#             # return that action
-#             return action  
 
-#         def update(self, memory_batch):
-#             # unpack our batch and convert to tensors
-#             states, next_states, actions, rewards = self.unpack_batch(memory_batch)
+            # sometimes take a random action
+            if np.random.rand() <= self.randomness:
+                action = self.env.random_action()
+            else:
+                # rospy.loginfo("qualities: {}".format(qualities))
+                action = qualities.detach().numpy()
 
-#             # compute what the output is (old expected qualities)
-#             # Q(S, A)
-#             old_targets = self.old_targets(states, actions)
+            # return that action
+            return action  
 
-#             # compute what the output should be (new expected qualities)
-#             # reward + max_a Q(S', a)
-#             new_targets = self.new_targets(states, next_states, rewards, actions)
+        def update(self, memory_batch):
+            # unpack our batch and convert to tensors
+            states, next_states, actions, rewards = self.unpack_batch(memory_batch)
 
-#             # compute the difference between old and new estimates
-#             loss = torch.nn.functional.smooth_l1_loss(old_targets, new_targets)
+            # compute what the output is (old expected qualities)
+            # Q(S, A)
+            old_targets = self.old_targets(states, actions)
 
-#             # apply difference to the neural network
-#             self.optimizer.zero_grad()
-#             loss.backward()
-#             self.optimizer.step()
+            # compute what the output should be (new expected qualities)
+            # reward + max_a Q(S', a)
+            new_targets = self.new_targets(states, next_states, rewards, actions)
 
-#             # for logging
-#             return loss.item()
+            # compute the difference between old and new estimates
+            loss = torch.nn.functional.smooth_l1_loss(old_targets, new_targets)
 
-#         def old_targets(self, states, actions):
-#             # model[states][action]
-#             return self.model(states).gather(1, actions)
+            # apply difference to the neural network
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
-#         def new_targets(self, states, next_states, rewards, actions):
-#             # reward + max(model[next_state])
-#             return rewards + torch.amax(self.model(next_states), dim=1, keepdim=True)
+            # for logging
+            return loss.item()
 
-#         def unpack_batch(self, batch):
-#             states, next_states, actions, rewards = zip(*batch)
+        def old_targets(self, states, actions):
+            # model[states][action]
+            # rospy.loginfo("states: {}".format(states))
+            # rospy.loginfo("next_states: {}".format(self.model(states)))
 
-#             states = torch.tensor(states).float().to(self.device)
-#             next_states = torch.tensor(next_states).float().to(self.device)
 
-#             # unsqueeze(1) makes 2d array. [1, 0, 1, ...] -> [[1], [0], [1], ...]
-#             # this is required because the first array is for the batch, and
-#             #   the inner arrays are for the elements
-#             # the states and next_states are already in this format so we don't
-#             #   need to do anything to them
-#             # .long() for the actions because we are using them as array indices
-#             actions = torch.tensor(actions).long().unsqueeze(1).to(self.device)
-#             rewards = torch.tensor(rewards).float().unsqueeze(1).to(self.device)
+            return self.model(states)
 
-#             return states, next_states, actions, rewards   
+        def new_targets(self, states, next_states, rewards, actions):
+            # reward + max(model[next_state])
+            return rewards + self.model(next_states)
 
-#         def update_randomness(self):
-#             self.randomness *= self.decay
-#             self.randomness = max(self.randomness, self.min_randomness)
+        def unpack_batch(self, batch):
+            states, next_states, actions, rewards = zip(*batch)
+
+            states = torch.tensor(states).float().to(self.device)
+            next_states = torch.tensor(next_states).float().to(self.device)
+
+            # unsqueeze(1) makes 2d array. [1, 0, 1, ...] -> [[1], [0], [1], ...]
+            # this is required because the first array is for the batch, and
+            #   the inner arrays are for the elements
+            # the states and next_states are already in this format so we don't
+            #   need to do anything to them
+            # .long() for the actions because we are using them as array indices
+            actions = torch.tensor(actions).long().unsqueeze(1).to(self.device)
+            rewards = torch.tensor(rewards).float().unsqueeze(1).to(self.device)
+
+            return states, next_states, actions, rewards   
+
+        def update_randomness(self):
+            self.randomness *= self.decay
+            self.randomness = max(self.randomness, self.min_randomness)
 
 
 
@@ -158,40 +168,96 @@ def main(env):
     environment = env
     # setup agent
     # agent = Agent(env)
-    agent = DummyAgent(environment)
+    # agent = DummyAgent(environment)
     # setup memory
-    memory = DummyMemory(max_size=1000)
+    # memory = DummyMemory(max_size=1000)
+
+    learning = []
+    losses = []
+
+    agent = Agent(environment)
+    memory = Memory(max_size=1000)
 
     # setup logging
     # writer = SummaryWriter()
 
     # setup training loop
-    episodes = 10
+    logging_iteration = 100
+    episodes = 1000
     batch_size = 32
     for episode in range(episodes):
         # reset environment
         state = environment.reset(rospy.get_rostime())
 
         # reset agent
-        # agent.update_randomness()
+        agent.update_randomness()
 
         # run episode
         done = False
         while not done:
+            # environment.unpause_simulation()
+            # rospy.loginfo("Unpaused")
             # get state
-            action = agent.act(state)
+
+            
+            action = agent.act(np.asarray(state, dtype=np.double))
 
             next_state, reward, done = environment.step(action, rospy.get_rostime())
-            # memory.push((state, next_state, action, reward))
+
+            # rospy.loginfo("state: {}".format(state))
+            # rospy.loginfo("next_state: {}".format(next_state))
+            # rospy.loginfo("action: {}".format(action))
+            # rospy.loginfo("reward: {}".format(reward))
+
+            test_element =(np.asarray(state), np.asarray(next_state), np.asarray(action), reward)
+            # rospy.loginfo("next_state: {}".format(test_element))
+            memory.push(element =(np.asarray(state), np.asarray(next_state), np.asarray(action), reward))
+
+            # pause phyiscs engine
+            # environment.pause_simulation()
+            # rospy.loginfo("Paused")
 
             # # update agent
-            # if len(memory) >= batch_size:
-            #     loss = agent.update(memory.get_batch(batch_size))
-            #     # writer.add_scalar("Loss", loss, episode)
+            if len(memory) >= batch_size:
+                loss = agent.update(memory.get_batch(batch_size))
+                losses.append(loss)
+                # writer.add_scalar("Loss", loss, episode)
 
-        # log episode
-        # writer.add_scalar("Reward", reward, episode)
+        for _ in range(64):
+            memory_batch = memory.get_batch(batch_size=64)
+            loss = agent.update(memory_batch)
+        losses.append(loss)
+        agent.update_randomness()
+            
+            
+        # print(f"Iteration: {episode}")
 
+
+        learning.append(episode)
+        if episode % logging_iteration == 0:
+            print(f"Iteration: {episode}")
+            print(f"  Moving-Average Steps: {np.mean(learning[-logging_iteration:]):.4f}")
+            print(f"  Memory-Buffer Size: {len(memory.memory)}")
+            print(f"  Agent Randomness: {agent.randomness:.3f}")
+            print()
+   
+    x = np.arange(0, len(losses), logging_iteration)
+    y = np.add.reduceat(losses, x) / logging_iteration
+
+    plt.plot(x, y)
+    plt.title("Loss During Training")
+    plt.xlabel("Episodes")
+    plt.ylabel("Loss")
+    plt.show()
+
+    x = np.arange(0, len(learning), logging_iteration)
+    y = np.add.reduceat(learning, x) / logging_iteration
+
+    sns.lineplot(x=x, y=y)
+    plt.title("Cart Lifespan During Training (500 is max)")
+    plt.xlabel("Episodes")
+    plt.ylabel("Lifespan Steps")
+    plt.show()
     # close logging
     # writer.close()
 
@@ -200,6 +266,9 @@ def main(env):
 
 class MyEnvironment(object):
     def __init__(self):
+
+        self.action_space = 15
+        self.observation_space = 22
 
         self.minumum_z = 0.30
         self.minumum_x_y_movement = 0.05 
@@ -229,6 +298,14 @@ class MyEnvironment(object):
         self.head_pub_sub = rospy.Subscriber("/head_servo_state_controller/state", JointTrajectoryControllerState,self.set_head_state_cb)
         rospy.Subscriber("/gazebo/model_states", ModelStates, self.set_model_state_cb)
 
+
+        rospy.wait_for_service('/gazebo/pause_physics')
+        rospy.loginfo("pause physics service found")
+        self.pause = rospy.ServiceProxy('/gazebo/pause_physics', Empty,persistent=True)
+
+        rospy.wait_for_service('/gazebo/unpause_physics')
+        rospy.loginfo("unpause physics service found")
+        self.unpause =rospy.ServiceProxy('/gazebo/unpause_physics', Empty,persistent=True)
         
         self.start_subscribing()
 
@@ -252,10 +329,8 @@ class MyEnvironment(object):
             head_velocities = self.head_servo_state.actual.velocities
         model_position = [self.model_state.pose[1].position.x,self.model_state.pose[1].position.y,self.model_state.pose[1].position.z]
         model_velocity = [self.model_state.twist[1].linear.x,self.model_state.twist[1].linear.y,self.model_state.twist[1].linear.z]
-        rospy.loginfo("model state size")
         state = [*right_positions, *right_velocities, *left_positions, *left_velocities, *head_positions, *head_velocities, *model_position, *model_velocity]
 
-        rospy.loginfo(self.model_state.pose[1].position.z)
         return state
 
 
@@ -384,7 +459,7 @@ class MyEnvironment(object):
             else:
                 rospy.loginfo("no connections")
 
-        rospy.sleep(1.0)
+        rospy.sleep(2.0)
 
         ms = ModelState()
         ms.model_name = "bd1"
@@ -404,7 +479,7 @@ class MyEnvironment(object):
         iteratinos = 1
         current =0
         
-        rospy.loginfo("action: %s", action.shape)
+        # rospy.loginfo("action: %s", action.shape)
 
         left_leg_actions = action[0:6]       
         right_leg_actions = action[6:12]
@@ -440,7 +515,7 @@ class MyEnvironment(object):
             current = current + 1
         rospy.sleep(1)
         state = self.get_state()
-        return state, self.get_reward(state), self.is_done(state)
+        return np.asarray(state,dtype=np.double), self.get_reward(state), self.is_done(state)
 
 
     def random_action(self):
@@ -459,48 +534,15 @@ class MyEnvironment(object):
         action = [random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo),
         random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo),
         random.uniform(min_head_p, max_head_p), random.uniform(min_head_p, max_head_p), random.uniform(0, max_vel_servo)]
-        return np.array(action)
-        # while current < iteratinos:
-        #     ctr_left = False
-        #     while not ctr_left:
-        #         left_connections = basic_moves.left_leg_pub.get_num_connections()
-        #         if left_connections > 0:
-                    # basic_moves.send_left_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo),current_time)
-        #             ctr_left = True
-        #         else:
-        #             rospy.loginfo("no connections")
-
-        #     ctr_right = False
-        #     while not ctr_right:
-        #         right_connections = basic_moves.right_leg_pub.get_num_connections()
-        #         if right_connections > 0:
-        #             basic_moves.send_right_leg_cmd(random.uniform(min_up_p, max_up_p), random.uniform(0, max_vel_servo), random.uniform(min_mid_p, max_mid_p), random.uniform(0, max_vel_servo), random.uniform(min_feet_p, max_feet_p), random.uniform(0, max_vel_servo),current_time)
-        #             ctr_right = True
-        #         else:
-        #             rospy.loginfo("no connections")
-            
-        #     ctr_head = False
-        #     while not ctr_head:
-        #         head_connections = basic_moves.head_pub.get_num_connections()
-        #         if head_connections > 0:
-        #             basic_moves.send_head_cmd(random.uniform(min_head_p, max_head_p), random.uniform(min_head_p, max_head_p), random.uniform(0, max_vel_servo),current_time)
-        #             ctr_head = True
-        #         else:
-        #             rospy.loginfo("no connections")
-        #     current = current + 1
-
-            # rospy.loginfo("in random action"+random.uniform(min_up_p, max_up_p).__str__())
-
-    # env.set_action_srv()
+        return action
 
 
+    def pause_simulation(self):
+        self.pause()
+       
 
-def test_get_state():
-    pass
-
-
-
-
+    def unpause_simulation(self):
+        self.unpause()
 
 if __name__ == "__main__":
     rospy.init_node('basic_moves')   
