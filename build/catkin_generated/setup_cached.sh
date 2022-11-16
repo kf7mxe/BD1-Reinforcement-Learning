@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
+export LD_LIBRARY_PATH='/home/trax/personal-projects/BD1/devel/lib:/opt/ros/noetic/lib'
+export PKG_CONFIG_PATH='/home/trax/personal-projects/BD1/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig'
 export PWD='/home/trax/personal-projects/bd1-2/build'
+export PYTHONPATH='/home/trax/personal-projects/BD1/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages'

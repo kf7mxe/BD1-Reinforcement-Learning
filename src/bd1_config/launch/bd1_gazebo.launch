@@ -1,7 +1,7 @@
 <launch>
     <arg name="robot" default="bd1"/>
     <arg name="paused" default="false"/>
-    
+    <arg name="world" default="$(find bd1_config)/worlds/yellowish-floor.world"/>
     
     <!-- VEL or TRAJ-->
     <arg name="servo_control" default="TRAJ"/>
@@ -19,6 +19,7 @@
     args="-param robot_description -urdf -z 0.2 -x 0 -y 0 -Y 0 -model $(arg robot)" />        
     
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world)"/>
         <arg name="debug" value="false" />
         <arg name="gui" value="true" />
         <arg name="paused" value="$(arg paused)"/>

@@ -16,20 +16,25 @@ from gazebo_msgs.srv import SetModelState, GetModelState, SpawnModel, DeleteMode
 from gazebo_msgs.msg import ModelStates
 import torch
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 class QualityNN(torch.nn.Module):
     def __init__(self, observation_space, action_space):
         super(QualityNN, self).__init__()
         self.observation_space = observation_space
         self.action_space = action_space
-        self.fc1 = torch.nn.Linear(observation_space, 128)
-        self.fc2 = torch.nn.Linear(128, 128)
-        self.fc3 = torch.nn.Linear(128, action_space)
+        self.fc1 = torch.nn.Linear(observation_space, 512)
+        self.fc2 = torch.nn.Linear(512, 1024)
+        self.fc3 = torch.nn.Linear(1024, 512)
+        self.fc4 = torch.nn.Linear(512, action_space)
+
+        self.network_description = "input layer: {} neurons, hidden layer: 1024 neurons, output layer: {} neurons".format(observation_space, action_space)
 
     def forward(self, x):
         x = self.fc1(x)
         x = self.fc2(x)
         x = self.fc3(x)
+        x = self.fc4(x)
         return x
 
 class Memory(object):
@@ -56,7 +61,7 @@ class Agent(object):
             self.model = QualityNN(environment.observation_space, environment.action_space).to(self.device)
             self.optimizer = torch.optim.Adam(self.model.parameters(), lr=3e-3)
             self.env = environment
-            self.decay = 0.995
+            self.decay = 0.99999
             self.randomness = 1.00
             self.min_randomness = 0.001
 
@@ -81,6 +86,16 @@ class Agent(object):
 
             # return that action
             return action  
+
+        def run_inference(self, state):
+            # move the state to a Torch Tensor
+            state =  torch.tensor(state).float().to(self.device)
+
+            # find the quality of both actions
+            qualities = self.model(state).cpu()
+
+            # return the action with the highest quality
+            return  qualities.detach().numpy()
 
         def update(self, memory_batch):
             # unpack our batch and convert to tensors
@@ -138,6 +153,12 @@ class Agent(object):
             self.randomness *= self.decay
             self.randomness = max(self.randomness, self.min_randomness)
 
+        def save(self, path):
+            torch.save(self.model.state_dict(), path)
+
+        def load(self, path):
+            self.model.load_state_dict(torch.load(path))
+
 
 
 class DummyAgent(object):
@@ -182,8 +203,8 @@ def main(env):
     # writer = SummaryWriter()
 
     # setup training loop
-    logging_iteration = 100
-    episodes = 1000
+    logging_iteration = 10
+    episodes = 10000
     batch_size = 32
     for episode in range(episodes):
         # reset environment
@@ -248,19 +269,39 @@ def main(env):
     plt.title("Loss During Training")
     plt.xlabel("Episodes")
     plt.ylabel("Loss")
+    plt.savefig(f"loss/loss-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
     plt.show()
 
     x = np.arange(0, len(learning), logging_iteration)
     y = np.add.reduceat(learning, x) / logging_iteration
 
     sns.lineplot(x=x, y=y)
-    plt.title("Cart Lifespan During Training (500 is max)")
+    plt.title("BD1 Lifespan During Training")
     plt.xlabel("Episodes")
     plt.ylabel("Lifespan Steps")
+    plt.savefig(f"lifespan/bd1_lifespan-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
     plt.show()
     # close logging
     # writer.close()
 
+    agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
+
+def infer_model(environment):
+    agent = Agent(environment)
+    agent.load(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
+    agent.model.eval()
+    state = environment.reset(rospy.get_rostime())
+    done = False
+    while not done:
+        action = agent.run_inference(np.asarray(state, dtype=np.double))
+        next_state, reward, done = environment.step(action, rospy.get_rostime())
+        state = next_state
+        print(f"action: {action}")
+        print(f"reward: {reward}")
+        print(f"done: {done}")
+        print(f"state: {state}")
+        print(f"next_state: {next_state}")
+        print()
 
 
 
@@ -271,7 +312,14 @@ class MyEnvironment(object):
         self.observation_space = 22
 
         self.minumum_z = 0.30
-        self.minumum_x_y_movement = 0.05 
+        self.minumum_x_y_movement = 0.5
+
+        self.minumum_x_y_movement_twist = 0.1
+
+        self.from_last_reward_x = 0
+        self.from_last_reward_y = 0
+
+        self.reward_type = "distance" #"distance" or "twist"
         
         
         self.left_leg_pub = rospy.Publisher("/left_leg_servo_states_controller/command", JointTrajectory, queue_size = 10)     
@@ -337,8 +385,17 @@ class MyEnvironment(object):
     def get_reward(self, state):
         if state[18] < self.minumum_z:
             return -1
-        if state[16] < self.minumum_x_y_movement and state[17] < self.minumum_x_y_movement:
-            return -1
+        # Distance 
+        if self.reward_type == "distance":
+            if (self.from_last_reward_x + state[16]) < self.minumum_x_y_movement and (state[17] + self.from_last_reward_y) < self.minumum_x_y_movement:
+                return -1
+        
+        # velocity
+        if self.reward_type == "twist":
+            if state[19] < self.minumum_x_y_movement_twist and state[20] < self.minumum_x_y_movement_twist:
+                return -1
+        self.from_last_reward_x = state[16]
+        self.from_last_reward_y = state[17]
         return 1
     
     def is_done(self, state):
@@ -547,7 +604,8 @@ class MyEnvironment(object):
 if __name__ == "__main__":
     rospy.init_node('basic_moves')   
     env = MyEnvironment()
-    main(env)
+    # main(env)
+    infer_model(env)
     # env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
 
     # rospy.sleep(1)
