@@ -195,6 +195,7 @@ def main(env):
 
     learning = []
     losses = []
+    rewards = []
 
     agent = Agent(environment)
     memory = Memory(max_size=1000)
@@ -203,7 +204,7 @@ def main(env):
     # writer = SummaryWriter()
 
     # setup training loop
-    logging_iteration = 10
+    logging_iteration = 1000
     episodes = 10000
     batch_size = 32
     for episode in range(episodes):
@@ -215,6 +216,7 @@ def main(env):
 
         # run episode
         done = False
+        total_reward = 0
         while not done:
             # environment.unpause_simulation()
             # rospy.loginfo("Unpaused")
@@ -224,6 +226,8 @@ def main(env):
             action = agent.act(np.asarray(state, dtype=np.double))
 
             next_state, reward, done = environment.step(action, rospy.get_rostime())
+
+            total_reward += reward
 
             # rospy.loginfo("state: {}".format(state))
             # rospy.loginfo("next_state: {}".format(next_state))
@@ -243,7 +247,7 @@ def main(env):
                 loss = agent.update(memory.get_batch(batch_size))
                 losses.append(loss)
                 # writer.add_scalar("Loss", loss, episode)
-
+        rewards.append(total_reward)
         for _ in range(64):
             memory_batch = memory.get_batch(batch_size=64)
             loss = agent.update(memory_batch)
@@ -260,31 +264,43 @@ def main(env):
             print(f"  Moving-Average Steps: {np.mean(learning[-logging_iteration:]):.4f}")
             print(f"  Memory-Buffer Size: {len(memory.memory)}")
             print(f"  Agent Randomness: {agent.randomness:.3f}")
+            print(f"  Reward: {total_reward:.3f}")
             print()
-   
-    x = np.arange(0, len(losses), logging_iteration)
-    y = np.add.reduceat(losses, x) / logging_iteration
+            agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
 
-    plt.plot(x, y)
-    plt.title("Loss During Training")
+
+    agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
+
+    # plt.plot(episodes, losses)
+    # plt.title("Loss During Training")
+    # plt.xlabel("Episodes")
+    # plt.ylabel("Loss")
+    # plt.savefig(f"loss/loss-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
+    # plt.show()
+
+
+    # display reward graph using plt
+    plt.plot(episodes,rewards)
+    plt.title("Reward During Training")
     plt.xlabel("Episodes")
-    plt.ylabel("Loss")
-    plt.savefig(f"loss/loss-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
+    plt.ylabel("Reward")
+    plt.savefig(f"reward/reward-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
+    
+
+
+
+    # display results of training with plt
+    plt.plot(learning)
+    plt.title("Learning During Training")
+    plt.xlabel("Episodes")
+    plt.ylabel("Steps")
+    plt.savefig(f"learning/learning-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
     plt.show()
 
-    x = np.arange(0, len(learning), logging_iteration)
-    y = np.add.reduceat(learning, x) / logging_iteration
 
-    sns.lineplot(x=x, y=y)
-    plt.title("BD1 Lifespan During Training")
-    plt.xlabel("Episodes")
-    plt.ylabel("Lifespan Steps")
-    plt.savefig(f"lifespan/bd1_lifespan-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
-    plt.show()
     # close logging
     # writer.close()
 
-    agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
 
 def infer_model(environment):
     agent = Agent(environment)
@@ -308,10 +324,12 @@ def infer_model(environment):
 class MyEnvironment(object):
     def __init__(self):
 
+        self.positive_reward_total =0
+
         self.action_space = 15
         self.observation_space = 22
 
-        self.minumum_z = 0.30
+        self.minumum_z = 0.2
         self.minumum_x_y_movement = 0.5
 
         self.minumum_x_y_movement_twist = 0.1
@@ -375,8 +393,8 @@ class MyEnvironment(object):
         if self.head_servo_state is not None:
             head_positions = self.head_servo_state.actual.positions
             head_velocities = self.head_servo_state.actual.velocities
-        model_position = [self.model_state.pose[1].position.x,self.model_state.pose[1].position.y,self.model_state.pose[1].position.z]
-        model_velocity = [self.model_state.twist[1].linear.x,self.model_state.twist[1].linear.y,self.model_state.twist[1].linear.z]
+        model_position = [self.model_state.pose[2].position.x,self.model_state.pose[2].position.y,self.model_state.pose[2].position.z]
+        model_velocity = [self.model_state.twist[2].linear.x,self.model_state.twist[2].linear.y,self.model_state.twist[2].linear.z]
         state = [*right_positions, *right_velocities, *left_positions, *left_velocities, *head_positions, *head_velocities, *model_position, *model_velocity]
 
         return state
@@ -387,7 +405,7 @@ class MyEnvironment(object):
             return -1
         # Distance 
         if self.reward_type == "distance":
-            if (self.from_last_reward_x + state[16]) < self.minumum_x_y_movement and (state[17] + self.from_last_reward_y) < self.minumum_x_y_movement:
+            if ( state[16] - self.from_last_reward_x ) < self.minumum_x_y_movement and (self.from_last_reward_y - state[17]) < self.minumum_x_y_movement:
                 return -1
         
         # velocity
@@ -396,6 +414,8 @@ class MyEnvironment(object):
                 return -1
         self.from_last_reward_x = state[16]
         self.from_last_reward_y = state[17]
+        print("reward")
+        self.positive_reward_total += 1
         return 1
     
     def is_done(self, state):
@@ -604,8 +624,8 @@ class MyEnvironment(object):
 if __name__ == "__main__":
     rospy.init_node('basic_moves')   
     env = MyEnvironment()
-    # main(env)
-    infer_model(env)
+    main(env)
+    # infer_model(env)
     # env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
 
     # rospy.sleep(1)
