@@ -23,20 +23,13 @@ import seaborn as sns
 class MechanicalInput(torch.nn.Module):
     def __init__(self):
         super(MechanicalInput, self).__init__()
-        # self.observation_space = observation_space
-        # self.action_space = action_space
-        # self.fc1 = torch.nn.Linear(observation_space, 128)
-        # self.fc2 = torch.nn.Linear(128, 512)
-        # self.fc3 = torch.nn.Linear(512, 128)
-        # self.fc4 = torch.nn.Linear(128, action_space)
-
-
-        self.layer1 = torch.nn.Linear(14, 32)
+        self.layer1 = torch.nn.Linear(16, 32)
         self.layer2 = torch.nn.Linear(32, 96)
 
-        self.network_description = "input layer: {} neurons, hidden layer: 512 neurons, output layer: {} neurons".format(observation_space, action_space)
 
     def forward(self, x):
+        # convert float tensor to double tensor
+        x = torch.tensor(x).float()
         x = self.layer1(x)
         x = torch.nn.functional.relu(x)
 
@@ -44,31 +37,33 @@ class MechanicalInput(torch.nn.Module):
         x = torch.nn.functional.relu(x)
 
         return x
-# class GyroscopeInput(torch.nn.Module):
-#     def __init__(self):
-#         super(GyroscopeInput, self).__init__()
+class GyroscopeInput(torch.nn.Module):
+    def __init__(self):
+        super(GyroscopeInput, self).__init__()
 
-#         self.layer1 = torch.nn.Conv1d(1, 16, kernel_size=3)
-#         self.layer2 = torch.nn.Conv1d(16, 16, kernel_size=3)
-#         self.flatten = torch.nn.Flatten()
+        self.layer1 = torch.nn.Linear(7, 32)
+        self.layer2 = torch.nn.Linear(32, 96)
 
-#     def forward(self, x):
-#         x = self.layer1(x)
-#         x = torch.nn.functional.relu(x)
+    def forward(self, x):
+        x = torch.tensor(x).float()
+        x = self.layer1(x)
+        x = torch.nn.functional.relu(x)
 
-#         x = self.layer2(x)
-#         x = torch.nn.functional.relu(x)
+        x = self.layer2(x)
+        x = torch.nn.functional.relu(x)
 
-#         return self.flatten(x)
+        return x
 class NN(torch.nn.Module):
     def __init__(self):
         super(NN, self).__init__()
 
-        self.layer1 = torch.nn.Linear(192, 64)
+        self.layer1 = torch.nn.Linear(198, 64)
         self.layer2 = torch.nn.Linear(64, 32)
         self.layer3 = torch.nn.Linear(32, 32)
     
     def forward(self, x):
+
+        x = torch.tensor(x).float()
         x = self.layer1(x)
         x = torch.nn.functional.relu(x)
 
@@ -86,14 +81,15 @@ class PolicyBlock(torch.nn.Module):
         super(PolicyBlock, self).__init__()
 
         self.layer1 = torch.nn.Linear(32, 32)
-        self.layer2 = torch.nn.Linear(32, 9)
+        self.layer2 = torch.nn.Linear(32, 15)
     
     def forward(self, x):
         x = self.layer1(x)
         x = torch.nn.functional.relu(x)
 
         x = self.layer2(x)
-        return torch.nn.functional.softmax(x, dim=1)
+        x = torch.nn.functional.softmax(x)
+        return x
 
 
 class AdvantageBlock(torch.nn.Module):
@@ -112,41 +108,46 @@ class AdvantageBlock(torch.nn.Module):
 
 
 class RobotZero(torch.nn.Module):
-    def __init__(self,observation_space, action_space):
+    def __init__(self):
         super(RobotZero, self).__init__()
 
         self.mechanical_input = MechanicalInput()
+        self.gyroscope_input = GyroscopeInput()
 
         self.shared_layers = NN()
 
         self.advantage         = AdvantageBlock()
         self.policy_right_leg   = PolicyBlock()
-        self.policy_left_legg  = PolicyBlock()
+        self.policy_left_leg  = PolicyBlock()
         self.policy_head  = PolicyBlock()
 
     def forward(self, x):
-        mechanics = x[0:18]
+        mechanics = x[0:16]
+        gyroscope = x[16:23]
+        model_position = x[23:29]
+
         mechanics = self.mechanical_input(mechanics)
-
-        model_position = x[18:24]
-
+        gyroscope = self.gyroscope_input(gyroscope)
         # put the features together and apply a few shared layers
         # before going to the separate tails
-        x = torch.concat([mechanics, model_position], dim=1)
+        # print("mechanics", mechanics.shape)
+        # print("gyroscope", gyroscope.shape)
+
+
+        x = torch.concat([mechanics, gyroscope ,model_position])
         x = self.shared_layers(x)
 
         advantage         = self.advantage(x)
-        policy_hip_left   = self.policy_hip_left(x)
-        policy_hip_right  = self.policy_hip_right(x)
-        policy_knee_left  = self.policy_knee_left(x)
-        policy_knee_right = self.policy_knee_right(x)
+        policy_right_leg   = self.policy_right_leg(x)
+        policy_left_leg  = self.policy_left_leg(x)
+        policy_head  = self.policy_head(x)
+ 
 
         return (
             advantage,
-            policy_hip_left,
-            policy_hip_right,
-            policy_knee_left,
-            policy_knee_right,
+            policy_right_leg,
+            policy_left_leg,
+            policy_head
         )
 
 # torchinfo.summary(RobotZero(), input_size=(256, 24))
@@ -172,6 +173,7 @@ class Memory(object):
 class MultiLoss(torch.nn.Module):
     def __init__(self):
         super(MultiLoss, self).__init__()
+        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     def policy_loss(self, log_probs, expected_advantage, advantage):
         policy_error = log_probs.sum(dim=1)
@@ -180,26 +182,22 @@ class MultiLoss(torch.nn.Module):
 
         return policy_error
 
-    def forward(self, policies, actions, expected_advantage, advantage):
-        probs = torch.empty(size=(actions.size())).unsqueeze(2).to("cuda:0")
-        for i, batch_item in enumerate(policies):
-            for j, policy in enumerate(batch_item):
-                probs[i, j] = policy[actions[i, j].long()]
-        log_probs = probs.log()
-
-        actor_loss = self.policy_loss(log_probs, expected_advantage, advantage)
+    def forward(self, log_probs, expected_advantage, advantage):
+        actor_loss = log_probs.sum() * abs(expected_advantage - advantage).item()
         critic_loss = torch.nn.functional.huber_loss(expected_advantage, advantage)
-        entropy_loss = -torch.sum(policies * policies.log())
 
-        total_loss = actor_loss + (critic_loss * 0.5) - (entropy_loss * 3e-3)
-        total_loss = actor_loss
+        total_loss = actor_loss + (critic_loss * 0.5)
 
         return total_loss
+
+
+def normalize(values, bounds):
+    return [bounds['desired']['lower'] + (x - bounds['actual']['lower']) * (bounds['desired']['upper'] - bounds['desired']['lower']) / (bounds['actual']['upper'] - bounds['actual']['lower']) for x in values]
 
 class Agent(object):
         def __init__(self, environment):
             self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-            self.model = RobotZero(environment.observation_space, environment.action_space).to(self.device)
+            self.model = RobotZero().to(self.device)
             self.optimizer = torch.optim.Adam(self.model.parameters(), lr=3e-3)
             self.env = environment
             self.decay = 0.99999
@@ -207,74 +205,140 @@ class Agent(object):
             self.min_randomness = 0.001
 
         def act(self, state):
-            
+            normalize_config = {
+                'actual': {
+                    'lower': 0,
+                    'upper': 1
+                },
+                'desired': {
+                    'lower': -5,
+                    'upper': 5
+                }
+            }
             state = torch.tensor(state).to(self.device)
-            
-            print(state.shape)
+            (
+            advantage,
+            policy_right_leg,
+            policy_left_leg,
+            policy_head) = self.model(state)
 
-            right_leg_tensor = state[0:6]
-            left_leg_tensor = state[6:12]
-            head_tensor = state[12:18]
+            policy_right_leg = normalize(policy_right_leg.tolist() , normalize_config)
+            policy_left_leg = normalize(policy_left_leg.tolist() , normalize_config)
+            policy_head = normalize(policy_head.tolist() , normalize_config)
+            policy_right_leg = torch.tensor(policy_right_leg).to(self.device)
+            policy_left_leg = torch.tensor(policy_left_leg).to(self.device)
+            policy_head = torch.tensor(policy_head).to(self.device)
+
+            m_rigt_leg = torch.distributions.Categorical(policy_right_leg.cpu())
+            m_left_leg = torch.distributions.Categorical(policy_left_leg.cpu())
+            m_head = torch.distributions.Categorical(policy_head.cpu())
 
 
-            m_rigt_leg = torch.distributions.Categorical(right_leg_tensor.cpu())
-            m_left_leg = torch.distributions.Categorical(left_leg_tensor.cpu())
-            m_head = torch.distributions.Categorical(head_tensor.cpu())
+            action_right_leg_up_pos = m_rigt_leg.sample()
+            actin_right_leg_up_vel = m_rigt_leg.sample()
+            action_right_leg_mid_pos = m_rigt_leg.sample()
+            actin_right_leg_mid_vel = m_rigt_leg.sample()
+            action_right_leg_feet_pos = m_rigt_leg.sample()
+            actin_right_leg_feet_vel = m_rigt_leg.sample()
 
-            action_right_leg = m_rigt_leg.sample()
-            action_left_leg = m_left_leg.sample()
-            action_head = m_head.sample()
+            action_left_leg_up_pos = m_left_leg.sample()
+            actin_left_leg_up_vel = m_left_leg.sample()
+            action_left_leg_mid_pos = m_left_leg.sample()
+            actin_left_leg_mid_vel = m_left_leg.sample()
+            action_left_leg_feet_pos = m_left_leg.sample()
+            actin_left_leg_feet_vel = m_left_leg.sample()
 
-            print("testin actinos")
-            print(action_right_leg)
-            print(action_left_leg)
-            print(action_head)
+            action_head_neck_position = m_head.sample()
+            action_head_neck_head = m_head.sample()
+            action_head_neck_velocity = m_head.sample()
+            action_head_neck_head_velocity = m_head.sample()
+
 
             actions = np.array((
-                (action_hip_left.item() - 4) * 0.2,
-                (action_hip_right.item() - 4) * 0.2,
-                (action_knee_left.item() - 4) * 0.2,
-                (action_knee_right.item() - 4) * 0.2
+                action_right_leg_up_pos.item(),
+                actin_right_leg_up_vel.item(),
+                action_right_leg_mid_pos.item(),
+                actin_right_leg_mid_vel.item(),
+                action_right_leg_feet_pos.item(),
+                actin_right_leg_feet_vel.item(),
+                
+                action_left_leg_up_pos.item(),
+                actin_left_leg_up_vel.item(),
+                action_left_leg_mid_pos.item(),
+                actin_left_leg_mid_vel.item(),
+                action_left_leg_feet_pos.item(),
+                actin_left_leg_feet_vel.item(),
+
+
+                action_head_neck_position.item(),
+                action_head_neck_head.item(),
+                action_head_neck_velocity.item(),
+                action_head_neck_head_velocity.item()
             ))
 
-            return actions
+            logs_probs = np.array((
+                m_rigt_leg.log_prob(action_right_leg_up_pos),
+                m_rigt_leg.log_prob(actin_right_leg_up_vel),
+                m_rigt_leg.log_prob(action_right_leg_mid_pos),
+                m_rigt_leg.log_prob(actin_right_leg_mid_vel),
+                m_rigt_leg.log_prob(action_right_leg_feet_pos),
+                m_rigt_leg.log_prob(actin_right_leg_feet_vel),
+
+                m_left_leg.log_prob(action_left_leg_up_pos),
+                m_left_leg.log_prob(actin_left_leg_up_vel),
+                m_left_leg.log_prob(action_left_leg_mid_pos),
+                m_left_leg.log_prob(actin_left_leg_mid_vel),
+                m_left_leg.log_prob(action_left_leg_feet_pos),
+                m_left_leg.log_prob(actin_left_leg_feet_vel),
+
+                m_head.log_prob(action_head_neck_position),
+                m_head.log_prob(action_head_neck_head),
+                m_head.log_prob(action_head_neck_velocity),
+                m_head.log_prob(action_head_neck_head_velocity)
+            ))
+
+            return actions, logs_probs
 
         def run_inference(self, state):
             # move the state to a Torch Tensor
             state =  torch.tensor(state).float().to(self.device)
 
             # find the quality of both actions
-            qualities = self.model(state).cpu()
+            qualities = self.model(state)
+            print("qualities")
+            print(qualities)
 
             # return the action with the highest quality
-            return  qualities.detach().numpy()
+            return  qualities[1]
 
-        def update(self, memory_batch):
-            states, next_states, actions, rewards = self.unpack_batch(batch)
+        def update(self, states, next_states, logs_probs, rewards):
+            states = torch.tensor(states).to(self.device)
+            states = torch.squeeze(states,0)
+            next_states = torch.tensor(next_states).to(self.device)
+            next_states = torch.squeeze(next_states,0)
+
 
             (
-                advantage,
-                policy_hip_left,
-                policy_hip_right,
-                policy_knee_left,
-                policy_knee_right,
+            advantage,
+            policy_right_leg,
+            policy_left_leg,
+            policy_head
             ) = self.model(states)
 
             policies = torch.hstack((
-                policy_hip_left,
-                policy_hip_right,
-                policy_knee_left,
-                policy_knee_right
-            )).view(-1, 4, 9)
+           policy_right_leg,
+            policy_left_leg,
+            policy_head
+            )).view(-1, 5, 9)
 
             next_advantage, *_ = self.model(next_states)
             td_target = rewards + next_advantage
 
-            loss = MultiLoss()(policies, actions, td_target, advantage)
+            loss = MultiLoss()(logs_probs, td_target, advantage)
 
-            agent.optimizer.zero_grad()
+            self.optimizer.zero_grad()
             loss.backward()
-            agent.optimizer.step()
+            self.optimizer.step()
 
             return loss.detach().cpu().item()
 
@@ -294,6 +358,7 @@ class Agent(object):
             states, next_states, actions, rewards = zip(*batch)
 
             states = torch.tensor(states).float().to(self.device)
+
             next_states = torch.tensor(next_states).float().to(self.device)
 
             # unsqueeze(1) makes 2d array. [1, 0, 1, ...] -> [[1], [0], [1], ...]
@@ -353,6 +418,10 @@ def main(env):
 
     learning = []
     losses = []
+    losses_logging = []
+    reward_logging= []
+
+    cumulative_reward = 0
 
     agent = Agent(environment)
     memory = Memory(max_size=10000)
@@ -361,15 +430,17 @@ def main(env):
     # writer = SummaryWriter()
 
     # setup training loop
-    logging_iteration = 10
-    episodes = 1000
+    logging_iteration = 1000
+    episodes = 50000
     batch_size = 32
+    rewards_logging = []
+
     for episode in range(episodes):
         # reset environment
         state = environment.reset(rospy.get_rostime())
 
         # reset agent
-        agent.update_randomness()
+        # agent.update_randomness()
 
         # run episode
         done = False
@@ -378,8 +449,7 @@ def main(env):
             # rospy.loginfo("Unpaused")
             # get state
 
-            
-            action = agent.act(np.asarray(state, dtype=np.double))
+            action, log_probs = agent.act(np.asarray(state, dtype=np.double))
 
             next_state, reward, done = environment.step(action, rospy.get_rostime())
 
@@ -388,37 +458,41 @@ def main(env):
             # rospy.loginfo("action: {}".format(action))
             # rospy.loginfo("reward: {}".format(reward))
 
-            test_element =(np.asarray(state), np.asarray(next_state), np.asarray(action), reward)
             # rospy.loginfo("next_state: {}".format(test_element))
             memory.push(element =(np.asarray(state), np.asarray(next_state), np.asarray(action), reward))
 
+            batch = memory.get_batch(batch_size)
             # pause phyiscs engine
             # environment.pause_simulation()
             # rospy.loginfo("Paused")
 
             # # update agent
-            if len(memory) >= batch_size:
-                loss = agent.update(memory.get_batch(batch_size))
-                losses.append(loss)
+            loss = agent.update(state, next_state,log_probs, reward)
+            loss += loss
+
+            cumulative_reward += reward
+            state = next_state
                 # writer.add_scalar("Loss", loss, episode)
 
-        for _ in range(64):
-            memory_batch = memory.get_batch(batch_size=64)
-            loss = agent.update(memory_batch)
-        losses.append(loss)
-        agent.update_randomness()
+        losses_logging.append(loss)
+        rewards_logging.append(cumulative_reward)
+        if episode % logging_iteration == 0:
+            print(f"Iteration: {episode}")
+            print(f"  Moving-Average Loss: {np.mean(losses_logging[-logging_iteration:]):.4f}")
+            print(f"  Moving-Average Rewards: {np.mean(rewards_logging[-logging_iteration:]):.4f}")
+            print()
             
             
         # print(f"Iteration: {episode}")
 
 
         learning.append(episode)
-        if episode % logging_iteration == 0:
-            print(f"Iteration: {episode}")
-            print(f"  Moving-Average Steps: {np.mean(learning[-logging_iteration:]):.4f}")
-            print(f"  Memory-Buffer Size: {len(memory.memory)}")
-            print(f"  Agent Randomness: {agent.randomness:.3f}")
-            print()
+        # if episode % logging_iteration == 0:
+        #     print(f"Iteration: {episode}")
+        #     print(f"  Moving-Average Steps: {np.mean(learning[-logging_iteration:]):.4f}")
+        #     print(f"  Memory-Buffer Size: {len(memory.memory)}")
+        #     print(f"  Agent Randomness: {agent.randomness:.3f}")
+        #     print()
    
     x = np.arange(0, len(losses), logging_iteration)
     y = np.add.reduceat(losses, x) / logging_iteration
@@ -427,7 +501,7 @@ def main(env):
     plt.title("Loss During Training")
     plt.xlabel("Episodes")
     plt.ylabel("Loss")
-    plt.savefig(f"loss/loss-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}.png")
+    plt.savefig(f"loss/loss-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-decay{agent.decay}.png")
     plt.show()
 
     x = np.arange(0, len(learning), logging_iteration)
@@ -437,16 +511,16 @@ def main(env):
     plt.title("BD1 Lifespan During Training")
     plt.xlabel("Episodes")
     plt.ylabel("Lifespan Steps")
-    plt.savefig(f"lifespan/bd1_lifespan-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}.png")
+    plt.savefig(f"lifespan/bd1_lifespan-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-decay{agent.decay}.png")
     plt.show()
     # close logging
     # writer.close()
 
-    agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}.pth")
+    agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-decay{agent.decay}.pth")
 
 def infer_model(environment):
     agent = Agent(environment)
-    agent.load(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}.pth")
+    agent.load(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-decay{agent.decay}.pth")
     agent.model.eval()
     state = environment.reset(rospy.get_rostime())
     done = False
@@ -467,10 +541,10 @@ class MyEnvironment(object):
     def __init__(self):
 
         self.action_space = 15
-        self.observation_space = 22
+        self.observation_space = 29
 
-        self.minumum_z = 0.30
-        self.minumum_x_y_movement = 0.5
+        self.minumum_z = 0.15
+        self.minumum_x_y_movement = 0.2
 
         self.from_last_reward_x = 0
         self.from_last_reward_y = 0
@@ -532,26 +606,38 @@ class MyEnvironment(object):
             head_positions = self.head_servo_state.actual.positions
             head_velocities = self.head_servo_state.actual.velocities
         if self.imu_state is not None:
-            imu_orientation = self.imu_state.orientation
-            imu_linear_acceleration = self.imu_state.linear_acceleration
-        model_position = [self.model_state.pose[1].position.x,self.model_state.pose[1].position.y,self.model_state.pose[1].position.z]
-        model_velocity = [self.model_state.twist[1].linear.x,self.model_state.twist[1].linear.y,self.model_state.twist[1].linear.z]
+            imu_orientation = [self.imu_state.orientation.x,self.imu_state.orientation.y,self.imu_state.orientation.z,self.imu_state.orientation.w]
+            imu_linear_acceleration = [self.imu_state.linear_acceleration.x,self.imu_state.linear_acceleration.y,self.imu_state.linear_acceleration.z]
+        model_position = [self.model_state.pose[2].position.x,self.model_state.pose[2].position.y,self.model_state.pose[2].position.z]
+        model_velocity = [self.model_state.twist[2].linear.x,self.model_state.twist[2].linear.y,self.model_state.twist[2].linear.z]
         state = [*right_positions, *right_velocities, *left_positions, *left_velocities, *head_positions, *head_velocities, *imu_orientation, *imu_linear_acceleration, *model_position, *model_velocity]
 
+        # print("testing get state")
+        # print("right pos",len(right_positions)) 
+        # print("righ vel",len(right_velocities)) 
+        # print("left pos",len(left_positions))
+        # print("left vel",len(left_velocities)) 
+        # print("head pos",len(head_positions))
+        # print("head vel",len(head_velocities))
+        # print("imu ori",len(imu_orientation))
+        # print("imu lin",len(imu_linear_acceleration))
+        # print("model pos",len(model_position))
+        # print("model vel",len(model_velocity))
+        # print(len(state))
         return state
 
 
     def get_reward(self, state):
-        if state[18] < self.minumum_z:
+        if state[25] < self.minumum_z:
             return -1
-        if (self.from_last_reward_x + state[16]) < self.minumum_x_y_movement and (self.from_last_reward_y + state[17]) < self.minumum_x_y_movement:
+        if (self.from_last_reward_x + state[23]) < self.minumum_x_y_movement and (self.from_last_reward_y + state[24]) < self.minumum_x_y_movement:
             return -1
-        self.current_x = state[16]
-        self.from_last_reward_y = state[17]
+        self.current_x = state[23]
+        self.from_last_reward_y = state[24]
         return 1
     
     def is_done(self, state):
-        if state[18] < self.minumum_z:
+        if state[25] < self.minumum_z:
             return True
         return False
 
@@ -758,9 +844,9 @@ class MyEnvironment(object):
 if __name__ == "__main__":
     rospy.init_node('basic_moves')   
     env = MyEnvironment()
-    # main(env)
-    infer_model(env)
-    env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
+    main(env)
+    # infer_model(env)
+    # env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
 
     # rospy.sleep(1)
 

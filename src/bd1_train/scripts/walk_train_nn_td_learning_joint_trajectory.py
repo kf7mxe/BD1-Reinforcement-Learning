@@ -330,7 +330,7 @@ class MyEnvironment(object):
         self.observation_space = 22
 
         self.minumum_z = 0.2
-        self.minumum_x_y_movement = 0.5
+        self.minumum_x_y_movement = 0.2
 
         self.minumum_x_y_movement_twist = 0.1
 
@@ -404,8 +404,11 @@ class MyEnvironment(object):
         if state[18] < self.minumum_z:
             return -1
         # Distance 
+
         if self.reward_type == "distance":
             if ( state[16] - self.from_last_reward_x ) < self.minumum_x_y_movement and (self.from_last_reward_y - state[17]) < self.minumum_x_y_movement:
+                print("minumum x y movement", self.minumum_x_y_movement)
+                print("state 16", state[16])
                 return -1
         
         # velocity
@@ -503,7 +506,7 @@ class MyEnvironment(object):
         min_feet_p = -np.pi/2
         max_mid_p = 2
         min_mid_p = 3#-np.pi
-        max_up_p = -1#np.pi/2
+        max_up_p = -1.15#np.pi/2
         min_up_p = -np.pi/2        
         max_head_p = 0#np.pi/2
         min_head_p = -1.5#-np.pi/2 
@@ -626,7 +629,7 @@ if __name__ == "__main__":
     env = MyEnvironment()
     main(env)
     # infer_model(env)
-    # env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
+    env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
 
     # rospy.sleep(1)
 
