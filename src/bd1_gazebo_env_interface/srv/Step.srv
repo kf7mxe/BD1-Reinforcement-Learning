@@ -1,6 +1,0 @@
-float64 step_duration_sec
-float64[] action
----
-float64[] state
-float64 reward
-bool done

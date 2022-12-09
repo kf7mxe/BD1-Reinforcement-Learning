@@ -213,7 +213,6 @@ include_directories(
 
 if ("$ENV{ROS_DISTRO}" STREQUAL "noetic")
 catkin_install_python(PROGRAMS
-    scripts/walk_train_nn_td_learning.py
     scripts/walk_train_nn_td_learning_joint_trajectory.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 endif()

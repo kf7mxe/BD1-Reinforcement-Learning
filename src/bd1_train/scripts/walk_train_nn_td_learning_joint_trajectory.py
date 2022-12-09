@@ -326,6 +326,7 @@ def main(env):
 def infer_model(environment):
     agent = Agent(environment)
     agent.load(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
+    # agent.load("best_model.pth")
     agent.model.eval()
     state = environment.reset(rospy.get_rostime())
     done = False

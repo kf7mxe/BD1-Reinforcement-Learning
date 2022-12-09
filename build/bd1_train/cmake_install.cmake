@@ -81,10 +81,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_train" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/walk_train_nn_td_learning.py")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/bd1_train" TYPE PROGRAM FILES "/home/trax/personal-projects/bd1-2/build/bd1_train/catkin_generated/installspace/walk_train_nn_td_learning_joint_trajectory.py")
 endif()
 
