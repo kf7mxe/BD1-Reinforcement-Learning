@@ -57,9 +57,10 @@ class Memory(object):
 
 class Agent(object):
         def __init__(self, environment):
+            self.learning_rate = 0.0001
             self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
             self.model = QualityNN(environment.observation_space, environment.action_space).to(self.device)
-            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=3e-3)
+            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
             self.env = environment
             self.decay = 0.99999
             self.randomness = 1.00
@@ -67,6 +68,7 @@ class Agent(object):
 
         def act(self, state):
             # move the state to a Torch Tensor
+            random_status= False
 
             #convert numpy array to torch tensor
             state = torch.tensor(state).float().to(self.device)
@@ -80,12 +82,13 @@ class Agent(object):
             # sometimes take a random action
             if np.random.rand() <= self.randomness:
                 action = self.env.random_action()
+                random_status = True
             else:
                 # rospy.loginfo("qualities: {}".format(qualities))
                 action = qualities.detach().numpy()
 
             # return that action
-            return action  
+            return action,random_status
 
         def run_inference(self, state):
             # move the state to a Torch Tensor
@@ -193,7 +196,7 @@ def main(env):
     # setup memory
     # memory = DummyMemory(max_size=1000)
 
-    learning = []
+    non_random_learning = []
     losses = []
     rewards = []
 
@@ -205,8 +208,9 @@ def main(env):
 
     # setup training loop
     logging_iteration = 1000
-    episodes = 10000
+    episodes = 50000
     batch_size = 32
+    max_reward_episode = 0
     for episode in range(episodes):
         # reset environment
         state = environment.reset(rospy.get_rostime())
@@ -217,17 +221,19 @@ def main(env):
         # run episode
         done = False
         total_reward = 0
+        random_status = True
         while not done:
             # environment.unpause_simulation()
             # rospy.loginfo("Unpaused")
             # get state
 
             
-            action = agent.act(np.asarray(state, dtype=np.double))
+            action, random_status = agent.act(np.asarray(state, dtype=np.double))
 
             next_state, reward, done = environment.step(action, rospy.get_rostime())
 
             total_reward += reward
+            max_reward_episode += reward
 
             # rospy.loginfo("state: {}".format(state))
             # rospy.loginfo("next_state: {}".format(next_state))
@@ -245,26 +251,29 @@ def main(env):
             # # update agent
             if len(memory) >= batch_size:
                 loss = agent.update(memory.get_batch(batch_size))
-                losses.append(loss)
                 # writer.add_scalar("Loss", loss, episode)
         rewards.append(total_reward)
         for _ in range(64):
             memory_batch = memory.get_batch(batch_size=64)
             loss = agent.update(memory_batch)
+        if random_status == False:
+            non_random_learning.append(loss)
+
         losses.append(loss)
         agent.update_randomness()
             
+        if total_reward > max_reward_episode:
+            max_reward_episode = total_reward
+            agent.save("best_model.pth")
             
         # print(f"Iteration: {episode}")
 
 
-        learning.append(episode)
         if episode % logging_iteration == 0:
             print(f"Iteration: {episode}")
-            print(f"  Moving-Average Steps: {np.mean(learning[-logging_iteration:]):.4f}")
             print(f"  Memory-Buffer Size: {len(memory.memory)}")
             print(f"  Agent Randomness: {agent.randomness:.3f}")
-            print(f"  Reward: {total_reward:.3f}")
+            print(f"  Max Reword: {max_reward_episode:.3f}")
             print()
             agent.save(f"bd1-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-reward-type-{environment.reward_type}.pth")
 
@@ -280,23 +289,35 @@ def main(env):
 
 
     # display reward graph using plt
-    plt.plot(episodes,rewards)
+
+    # get a list from 1 to the number of episodes
+    episode_array = np.arange(1, episodes+1)
+
+
+    plt.plot(episode_array,rewards)
     plt.title("Reward During Training")
     plt.xlabel("Episodes")
     plt.ylabel("Reward")
     plt.savefig(f"reward/reward-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
-    
+    plt.show()
 
 
 
     # display results of training with plt
-    plt.plot(learning)
+    plt.plot(episode_array,losses)
     plt.title("Learning During Training")
     plt.xlabel("Episodes")
-    plt.ylabel("Steps")
+    plt.ylabel("Loss")
     plt.savefig(f"learning/learning-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
     plt.show()
 
+    x = np.arange(0, len(non_random_learning))
+    plt.plot(x,non_random_learning)
+    plt.title("Learning During Training")
+    plt.xlabel("Episodes")
+    plt.ylabel("Loss")
+    plt.savefig(f"non_random_learning-min_z-{environment.minumum_z}-min-x-y-{environment.minumum_x_y_movement}-network-{agent.model.network_description}-decay{agent.decay}-{environment.reward_type}.png")
+    plt.show()
 
     # close logging
     # writer.close()
@@ -308,16 +329,42 @@ def infer_model(environment):
     agent.model.eval()
     state = environment.reset(rospy.get_rostime())
     done = False
+    rewards = []
+    total_rewards_list = []
+    total_reward=0
     while not done:
         action = agent.run_inference(np.asarray(state, dtype=np.double))
         next_state, reward, done = environment.step(action, rospy.get_rostime())
+        rewards.append(reward)
         state = next_state
+        total_reward+=reward
+        total_rewards_list.append(total_reward)
         print(f"action: {action}")
         print(f"reward: {reward}")
         print(f"done: {done}")
         print(f"state: {state}")
         print(f"next_state: {next_state}")
         print()
+
+    iterations = np.arange(0, len(rewards))
+    plt.plot(iterations,rewards)
+    plt.title("Reward During Inference")
+    plt.xlabel("Episodes")
+    plt.ylabel("Reward")
+    plt.savefig(f"rewards durring inference.png")
+    plt.show()
+
+
+    iterations = np.arange(0, len(total_rewards_list))
+    plt.plot(iterations,total_rewards_list)
+    plt.title("Total Reward During Inference")
+    plt.xlabel("Episodes")
+    plt.ylabel("Reward")
+    plt.savefig(f"total rewards durring inference.png")
+    plt.show()
+
+
+
 
 
 
@@ -329,8 +376,8 @@ class MyEnvironment(object):
         self.action_space = 15
         self.observation_space = 22
 
-        self.minumum_z = 0.2
-        self.minumum_x_y_movement = 0.2
+        self.minumum_z = 0.15
+        self.minumum_x_y_movement = 0.1
 
         self.minumum_x_y_movement_twist = 0.1
 
@@ -406,10 +453,10 @@ class MyEnvironment(object):
         # Distance 
 
         if self.reward_type == "distance":
-            if ( state[16] - self.from_last_reward_x ) < self.minumum_x_y_movement and (self.from_last_reward_y - state[17]) < self.minumum_x_y_movement:
-                print("minumum x y movement", self.minumum_x_y_movement)
-                print("state 16", state[16])
-                return -1
+            if ( state[16] - self.from_last_reward_x ) < self.minumum_x_y_movement and abs(self.from_last_reward_y - state[17]) < self.minumum_x_y_movement:
+                # print("minumum x y movement", self.minumum_x_y_movement)
+                # print("state 16", state[16])
+                return 0
         
         # velocity
         if self.reward_type == "twist":
@@ -417,7 +464,6 @@ class MyEnvironment(object):
                 return -1
         self.from_last_reward_x = state[16]
         self.from_last_reward_y = state[17]
-        print("reward")
         self.positive_reward_total += 1
         return 1
     
@@ -552,17 +598,34 @@ class MyEnvironment(object):
         ms.pose.orientation.w = 1
 
         self.set_model_state_srv(ms)
-        return []        
+        return []   
+
+    def normalize(self,values, bounds):
+        return [bounds['desired']['lower'] + (x - bounds['actual']['lower']) * (bounds['desired']['upper'] - bounds['desired']['lower']) / (bounds['actual']['upper'] - bounds['actual']['lower']) for x in values]
+     
 
 
     def step(self, action,time):
+        normalize_config = {
+                'actual': {
+                    'lower': 0,
+                    'upper': 1
+                },
+                'desired': {
+                    'lower': -5,
+                    'upper': 5
+                }
+            }
+
+
+
         iteratinos = 1
         current =0
         
         # rospy.loginfo("action: %s", action.shape)
 
-        left_leg_actions = action[0:6]       
-        right_leg_actions = action[6:12]
+        left_leg_actions = self.normalize(action[0:6], normalize_config)     
+        right_leg_actions = self.normalize(action[6:12], normalize_config)
         head_actions = action[12:15]
 
         while current < iteratinos:
@@ -588,7 +651,8 @@ class MyEnvironment(object):
             while not ctr_head:
                 head_connections = self.head_pub.get_num_connections()
                 if head_connections > 0:
-                    self.send_head_cmd(head_actions[0],head_actions[1],head_actions[2],time)
+                    # self.send_head_cmd(head_actions[0],head_actions[1],head_actions[2],time)
+                    self.send_head_cmd(np.pi/2,-1.5,1,time)
                     ctr_head = True
                 else:
                     rospy.loginfo("no connections")
@@ -627,9 +691,9 @@ class MyEnvironment(object):
 if __name__ == "__main__":
     rospy.init_node('basic_moves')   
     env = MyEnvironment()
-    main(env)
-    # infer_model(env)
-    env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
+    # main(env)
+    infer_model(env)
+    # env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
 
     # rospy.sleep(1)
 

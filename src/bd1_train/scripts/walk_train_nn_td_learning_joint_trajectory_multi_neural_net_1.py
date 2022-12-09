@@ -430,8 +430,8 @@ def main(env):
     # writer = SummaryWriter()
 
     # setup training loop
-    logging_iteration = 1000
-    episodes = 50000
+    logging_iteration = 10
+    episodes = 20
     batch_size = 32
     rewards_logging = []
 
@@ -526,6 +526,7 @@ def infer_model(environment):
     done = False
     while not done:
         action = agent.run_inference(np.asarray(state, dtype=np.double))
+        print("action: {}".format(action))
         next_state, reward, done = environment.step(action, rospy.get_rostime())
         state = next_state
         print(f"action: {action}")
@@ -634,6 +635,7 @@ class MyEnvironment(object):
             return -1
         self.current_x = state[23]
         self.from_last_reward_y = state[24]
+        print("reward")
         return 1
     
     def is_done(self, state):
@@ -844,7 +846,7 @@ class MyEnvironment(object):
 if __name__ == "__main__":
     rospy.init_node('basic_moves')   
     env = MyEnvironment()
-    main(env)
+    # main(env)
     # infer_model(env)
     # env.reset_to_standing_cb(rospy.get_rostime()) # take a certain time to load the model and set the joints
 
