@@ -20,3 +20,7 @@ roslaunch bd1_config bd1_gazebo.launch
 # run python file
 python3 walk_train_nn_td_learning_joint_trajectory.py
 
+# Other
+ ## Link to video presentation 
+ https://www.youtube.com/watch?v=cci-cr_Va7Q
+
